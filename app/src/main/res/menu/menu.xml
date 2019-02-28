@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/MenuOlorAlibro"
+        android:icon="@drawable/ic_store_black_24dp"
+        android:title="home"
+        app:showAsAction="ifRoom" />
+
+
+
+
+    <item
+        android:id="@+id/LoginToolbar"
+        android:title="Login"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/ActividadesToolbar"
+        android:title="Actividades"
+        app:showAsAction="never" />
+
+
+</menu>
