@@ -22,14 +22,6 @@
         app:headerLayout="@layout/nav_header_menu_desplegable"
         app:menu="@menu/activity_menu_desplegable_drawer" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/hola"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:lottie_imageAssetsFolder="assets"
-        app:lottie_fileName="corazon.json"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        />
+
 
 </android.support.v4.widget.DrawerLayout>

@@ -9,4 +9,9 @@
     tools:context=".MenuDesplegableActivity"
     tools:showIn="@layout/app_bar_menu_desplegable">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hola que tal"/>
+
 </android.support.constraint.ConstraintLayout>

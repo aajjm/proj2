@@ -18,7 +18,17 @@
         android:layout_height="wrap_content"
         android:hint="Password"
         />
+    <TextView
+        android:id="@+id/registroBoton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registro"
+        android:textStyle="italic"
+        android:textColor="#0000FF"
+        android:onClick="Registro"
+        tools:ignore="OnClick" />
 <Button
+    android:id="@+id/boton"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Acceder"/>
