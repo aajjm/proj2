@@ -9,25 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-        <activity android:name=".MainActivity" />
         <activity
-            android:name=".Login"
+            android:name=".Activities.Login"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
-            android:name=".MenuDesplegableActivity"
+            android:name=".Activities.MenuDesplegableActivity"
             android:label="@string/title_activity_menu_desplegable"
-            android:theme="@style/NoActionBar"></activity>
+            android:theme="@style/NoActionBar"
+            android:icon="@drawable/logocsp">
+
+            >
+        </activity>
         <activity
-            android:name=".Splash"
+            android:name=".Activities.Splash"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            >
         </activity>
-        <activity android:name=".Registro"></activity>
+        <activity android:name=".Activities.Registro" />
     </application>
 
 </manifest>
