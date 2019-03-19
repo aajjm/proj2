@@ -1,13 +1,14 @@
-package com.example.cep.proj2;
+package com.example.cep.proj2.Activities;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ProgressBar;
+
+import com.example.cep.proj2.R;
 
 public class Splash extends Activity {
     private final int DURACION_SPLASH = 4000; // 4 segundos
