@@ -14,11 +14,10 @@
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
             android:name=".Activities.MenuDesplegableActivity"
-            android:label="@string/title_activity_menu_desplegable"
+            android:label="MenuDesplegableActivity"
             android:theme="@style/NoActionBar"
             android:icon="@drawable/logocsp">
 
-            >
         </activity>
         <activity
             android:name=".Activities.Splash"
