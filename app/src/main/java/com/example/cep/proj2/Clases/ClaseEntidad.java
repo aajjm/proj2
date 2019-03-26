@@ -1,5 +1,6 @@
 package com.example.cep.proj2.Clases;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClaseEntidad {
@@ -13,15 +14,15 @@ public class ClaseEntidad {
     private String altitud;
     private String latitud;
     private String contraseña;
-    private List<ClaseTelefono> telefono;
+    private ArrayList<ClaseTelefono> telefono;
 
- //    List<ClaseEquipo> equipo
 
- //   private List<ClaseEquipo> equipo;
+
+   private ArrayList<ClaseEquipo> equipo;
     public ClaseEntidad(){
 
     }
-    public ClaseEntidad(int id, String nombre, String temporada, String direccion, String NIF, String correo, String video, String altitud, String latitud, String contraseña, List<ClaseTelefono> telefono) {
+    public ClaseEntidad(int id, String nombre, String temporada, String direccion, String NIF, String correo, String video, String altitud, String latitud, String contraseña, ArrayList<ClaseTelefono> telefono, ArrayList<ClaseEquipo> equipo) {
         this.id = id;
         this.nombre = nombre;
         this.temporada = temporada;
@@ -33,7 +34,7 @@ public class ClaseEntidad {
         this.latitud = latitud;
         this.contraseña = contraseña;
         this.telefono = telefono;
-      //  this.equipo = equipo;
+       this.equipo = equipo;
     }
 
     public int getId() {
@@ -76,13 +77,13 @@ public class ClaseEntidad {
         return contraseña;
     }
 
-    public List<ClaseTelefono> getTelefono() {
+    public ArrayList<ClaseTelefono> getTelefono() {
         return telefono;
     }
 
-  //  public List<ClaseEquipo> getEquipo() {
-  //      return equipo;
-   // }
+  public ArrayList<ClaseEquipo> getEquipo() {
+       return equipo;
+   }
 
     public void setId(int id) {
         this.id = id;
@@ -124,11 +125,11 @@ public class ClaseEntidad {
         this.contraseña = contraseña;
     }
 
-    public void setTelefono(List<ClaseTelefono> telefono) {
+    public void setTelefono(ArrayList<ClaseTelefono> telefono) {
         this.telefono = telefono;
     }
 
-    //public void setEquipo(List<ClaseEquipo> equipo) {
-   //     this.equipo = equipo;
-   // }
+    public void setEquipo(ArrayList<ClaseEquipo> equipo) {
+        this.equipo = equipo;
+    }
 }

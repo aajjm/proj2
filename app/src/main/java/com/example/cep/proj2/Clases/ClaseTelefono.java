@@ -1,5 +1,6 @@
 package com.example.cep.proj2.Clases;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClaseTelefono {
@@ -8,9 +9,9 @@ public class ClaseTelefono {
     private int id_entidad;
     private String propietario;
     private String temporada_entidad;
-    private List<ClaseEntidad> entidad;
+    private ArrayList<ClaseEntidad> entidad;
     public ClaseTelefono(){}
-    public ClaseTelefono(int id, int telefono1, int id_entidad, String propietario, String temporada_entidad, List<ClaseEntidad> entidad) {
+    public ClaseTelefono(int id, int telefono1, int id_entidad, String propietario, String temporada_entidad, ArrayList<ClaseEntidad> entidad) {
         this.id = id;
         this.telefono1 = telefono1;
         this.id_entidad = id_entidad;
@@ -59,11 +60,11 @@ public class ClaseTelefono {
         this.temporada_entidad = temporada_entidad;
     }
 
-    public List<ClaseEntidad> getEntidad() {
+    public ArrayList<ClaseEntidad> getEntidad() {
         return entidad;
     }
 
-    public void setEntidad(List<ClaseEntidad> entidad) {
+    public void setEntidad(ArrayList<ClaseEntidad> entidad) {
         this.entidad = entidad;
     }
 }

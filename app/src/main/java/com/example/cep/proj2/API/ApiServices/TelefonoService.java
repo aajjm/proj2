@@ -3,6 +3,7 @@ package com.example.cep.proj2.API.ApiServices;
 import com.example.cep.proj2.Clases.ClaseEntidad;
 import com.example.cep.proj2.Clases.ClaseTelefono;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -16,7 +17,7 @@ import retrofit2.http.Path;
 public interface TelefonoService {
 
     @GET("api/TELEFONOes")
-    Call<List<ClaseTelefono>> getTelefono();
+    Call<ArrayList<ClaseTelefono>> getTelefono();
 
 
     @GET("api/TELEFONOes/{id}")
