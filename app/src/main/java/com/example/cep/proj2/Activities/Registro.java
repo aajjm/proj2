@@ -1,5 +1,6 @@
 package com.example.cep.proj2.Activities;
 
+import android.content.Intent;
 import android.net.ParseException;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +11,13 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.cep.proj2.API.Api;
+import com.example.cep.proj2.API.ApiServices.EntidadService;
+import com.example.cep.proj2.Clases.ClaseEntidad;
 import com.example.cep.proj2.Clases.ClaseUsuario;
+import com.example.cep.proj2.MensajeError;
 import com.example.cep.proj2.R;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,165 +29,75 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Registro extends AppCompatActivity {
-   /* private EditText nombre, direccion, NIF, correo,altitud,latitud, contraseña, repetir_contraseña;
-    private Button btn_registro;
-    private ProgressBar cargando;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro);
-        /*nombre = findViewById(R.id.nombre);
-        direccion = findViewById(R.id.direccion);
-        NIF = findViewById(R.id.NIF);
-        correo = findViewById(R.id.Correo);
-        altitud = findViewById(R.id.altitud);
-        latitud = findViewById(R.id.latitud);
-        contraseña = findViewById(R.id.contraseña);
-        repetir_contraseña = findViewById(R.id.repcontraseña);
+        setContentView(R.layout.fragment_entidad);
 
-        cargando = findViewById(R.id.registroCargando);
+     final EditText  Nombre =(EditText) findViewById(R.id.nombre);
+        final EditText direccion=(EditText) findViewById(R.id.direccion);
+        final EditText NIF =(EditText) findViewById(R.id.NIF);
+        final EditText Correo =(EditText) findViewById(R.id.Correo);
+        final EditText Altitud =(EditText) findViewById(R.id.altitud);
+        final EditText Latitud =(EditText) findViewById(R.id.latitud);
+        final EditText Contraseña =(EditText)findViewById(R.id.contraseña);
+        final EditText RepContraseña =(EditText) findViewById(R.id.repcontraseña);
+        final Button botonaceptar=(Button) findViewById(R.id.registrar);
 
-        btn_registro = findViewById(R.id.registrar);
-        final ArrayList<ClaseUsuario> usuarios = new ArrayList<ClaseUsuario>();
-        /**
-         * Evento que se inicia al hacer clic en el botón 'Registrarse'
-         */
-     /*   btn_registro.setOnClickListener(new View.OnClickListener() {
+
+
+        botonaceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /**
-                 * Hacemos visible la barra de carga circular y escondemos el botón.
-                 */
-              /*  cargando.setVisibility(View.VISIBLE);
-                btn_registro.setVisibility(View.GONE);
+                ClaseEntidad entidad= new ClaseEntidad();
+                entidad.setNombre(Nombre.getText().toString());
+                entidad.setDireccion(direccion.getText().toString());
+                entidad.setNIF(NIF.getText().toString());
+                entidad.setCorreo(Correo.getText().toString());
+                entidad.setAltitud(Altitud.getText().toString());
+                entidad.setLatitud(Latitud.getText().toString());
+                entidad.setContraseña(Contraseña.getText().toString());
+                entidad.setContraseña(RepContraseña.getText().toString());
 
-                /**
-                 * Si la contraseña y repetir contraseña y además todos los EditText
-                 * no están vacíos pasamos a la siguiente condición.
-                 */
-               /* if (contraseña.getText().toString().equals(repetir_contraseña.getText().toString()) && !(nombre.getText().toString().isEmpty()
-                        || direccion.getText().toString().isEmpty() || NIF.getText().toString().isEmpty()   || altitud.getText().toString().isEmpty()  || latitud.getText().toString().isEmpty()|| correo.getText().toString().isEmpty()
-                        || contraseña.getText().toString().isEmpty()))
-                {
-                    /**
-                     * Le pasamos el ArrayList de usuarios y el correo introducido por el usuario.
-                     * Si no existe ese correo, creamos el usuario y lo introducimos en el archivo JSON.
-                     */
-                /*    if (!readJSON2(correo.getText().toString(), usuarios)) {
-                        ArrayList<ClaseActivitats> activitats = new ArrayList<ClaseActivitats>();
+                EntidadService entidadService = Api.getApi().create(EntidadService.class);
+                Call<ClaseEntidad> listcall= entidadService.InsertarEntidad(entidad);
+                listcall.enqueue(new Callback<ClaseEntidad>() {
+                    @Override
+                    public void onResponse(Call<ClaseEntidad> call, Response<ClaseEntidad> response) {
+                      switch (response.code()){
 
-                        ClaseUsuarioActividades usu3 = new ClaseUsuarioActividades(nombre.getText().toString(), Integer.parseInt(edad.getText().toString()),
-                                Integer.parseInt(codigo_postal.getText().toString()), correo.getText().toString(), contraseña.getText().toString(), activitats, 0);
-                        usuarios.add(usu3);
+                          case 201:
+                              Toast toast1 =  Toast.makeText(getApplicationContext(),
+                                      "PRUEBA", Toast.LENGTH_SHORT);
 
-                        JSONArray jsonArray = new JSONArray();
-                        JSONObject obj;
+                              toast1.show();
+                              Intent i=new Intent();
+                              i.setClass(Registro.this,MenuDesplegableActivity.class);
+                              startActivity(i);
 
-                        Iterator<ClaseUsuarioActividades> iteratorusuarios = usuarios.iterator();
-                        while (iteratorusuarios.hasNext()) {
-                            obj = new JSONObject();
-                            ClaseUsuarioActividades user = iteratorusuarios.next();
-                            obj.put("nombre", user.getNombre());
-                            obj.put("edad", user.getEdad());
-                            obj.put("codigopostal", user.getCodigopostal());
-                            obj.put("correo", user.getCorreo());
-                            obj.put("contraseña", user.getContraseña());
-                            obj.put("actividades", user.getActividades());
-                            obj.put("puntuacion", user.getPuntuacion());
-                            jsonArray.add(obj);
-                        }
-                        try {
-                            FileWriter file = new FileWriter(Environment.getExternalStorageDirectory() + "/JSON_files/usuarios.json");
-                            file.write(jsonArray.toJSONString());
-                            file.flush();
+                              break;
+                          case 400:
 
-                        } catch (IOException e) {
-                            Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
-                        }
-                        Intent myintent = new Intent(RegistrarUsuario.this, olorAlibroRegistrado.class);
-                        myintent.putExtra("usuario",(usuarios.size()-1));
-                        startActivityForResult(myintent, 0);
+                              Gson gson = new Gson();
+                              MensajeError mensajeError=gson.fromJson(response.errorBody().charStream(),MensajeError.class);
+                              Toast.makeText(getApplicationContext(),mensajeError.getMessage(),Toast.LENGTH_LONG).show();
+                              break;
+                      }
                     }
-                    else {
-                        Toast.makeText(getApplicationContext(), "Ya hay una cuenta con este correo.", Toast.LENGTH_LONG).show();
-                        cargando.setVisibility(View.GONE);
-                        btn_registro.setVisibility(View.VISIBLE);
-                        correo.setText("");
+
+                    @Override
+                    public void onFailure(Call<ClaseEntidad> call, Throwable t) {
+    Toast.makeText(getApplicationContext(),t.getCause()+"-"+t.getMessage(),Toast.LENGTH_LONG).show();
                     }
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "Datos incorrectos.", Toast.LENGTH_LONG).show();
-                    cargando.setVisibility(View.GONE);
-                    btn_registro.setVisibility(View.VISIBLE);
-                }
+                });
             }
         });
-    }
-
-    public boolean readJSON2(String correo_registrar,ArrayList<ClaseUsuario> usuarios2)
-    {
-        boolean encontrado = false;
-
-        JSONParser parser = new JSONParser();
-
-        try
-        {
-
-            Object obj = parser.parse(new FileReader(Environment.getExternalStorageDirectory() + "/JSON_files/usuarios.json"));
-
-            JSONArray jsonArray = (JSONArray) obj;
-
-            for (int i=0; i<jsonArray.size(); i++){
-
-                JSONObject jsonObject = (JSONObject) jsonArray.get(i);
-
-                String nombre = (String) jsonObject.get("nombre");
-                String direccion = (String) jsonObject.get("direccion");
-                String NIF = (String) jsonObject.get("NIF");
-                String correo = (String) jsonObject.get("correo");
-                int latitud = (int) (long) jsonObject.get("latitud");
-                int altitud = (int) (long) jsonObject.get("altitud");
-
-                String contraseña = (String) jsonObject.get("contraseña");
-
-                JSONArray jsonArrayA = (JSONArray)jsonObject.get("actividades");
-                Iterator<String> iterator = jsonArrayA.iterator();
 
 
-                ClaseUsuario usuario = new ClaseUsuario(nombre, direccion, NIF, correo,altitud,latitud, contraseña);
-                usuarios2.add(usuario);
-            }
-
-
-        } catch (ParseException e)
-        {
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
-        } catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
-        }
-        Iterator<ClaseUsuario> iteratorusuarios = usuarios2.iterator();
-        while (iteratorusuarios.hasNext() && encontrado == false)
-        {
-            ClaseUsuario user = iteratorusuarios.next();
-
-            if (user.getCorreo().equals(correo_registrar)) {
-                encontrado = true;
-            }
-
-        }
-        return encontrado;
-    }
-
-*/
 }}

@@ -12,12 +12,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.cep.proj2.API.Api;
+import com.example.cep.proj2.API.ApiServices.AdministradorService;
+import com.example.cep.proj2.Clases.ClaseAdministrador;
+import com.example.cep.proj2.Clases.ClaseEntidad;
 import com.example.cep.proj2.Fragments.fragmentActividades;
 import com.example.cep.proj2.Fragments.fragmentEntidades;
 import com.example.cep.proj2.Fragments.fragmentoNoticias;
 import com.example.cep.proj2.Fragments.frangmentPreguntas;
 import com.example.cep.proj2.R;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MenuDesplegableActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,6 +46,29 @@ public class MenuDesplegableActivity extends AppCompatActivity
         getSupportActionBar().setIcon(R.mipmap.logocsppeque);
 
         toolbar.getLogo();
+        AdministradorService administradorService = Api.getApi().create(AdministradorService.class);
+       Call<ArrayList<ClaseAdministrador>>listCall= administradorService.getAdministrador();
+       listCall.enqueue(new Callback<ArrayList<ClaseAdministrador>>() {
+           @Override
+           public void onResponse(Call<ArrayList<ClaseAdministrador>> call, Response<ArrayList<ClaseAdministrador>> response) {
+               switch (response.code()){
+                   case 200:
+
+                       break;
+                       default:
+                           break;
+
+
+               }
+           }
+
+           @Override
+           public void onFailure(Call<ArrayList<ClaseAdministrador>> call, Throwable t) {
+               Toast.makeText(getApplicationContext(),t.getCause()+"-"+t.getMessage(),Toast.LENGTH_LONG).show();
+           }
+       });
+
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -116,4 +153,5 @@ public class MenuDesplegableActivity extends AppCompatActivity
         FragmentManager manager= getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.contenedorFragments,frag).commit();
     }
+
 }
