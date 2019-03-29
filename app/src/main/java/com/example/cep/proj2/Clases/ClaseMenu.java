@@ -2,14 +2,14 @@ package com.example.cep.proj2.Clases;
 
 import java.io.Serializable;
 
-public class ClaseNoticias implements Serializable {
+public class ClaseMenu implements Serializable {
 
     int foto;
     String nombre;
 
-    String descripcion;
 
-    public ClaseNoticias(int foto, String nombre) {
+
+    public ClaseMenu(int foto, String nombre) {
         this.foto = foto;
         this.nombre = nombre;
     }
@@ -22,16 +22,13 @@ public class ClaseNoticias implements Serializable {
         return nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
 
     @Override
     public String toString() {
-        return "ClaseNoticias{" +
+        return "ClaseMenu{" +
                 "foto='" + foto + '\'' +
                 ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
+
                 '}';
     }
 }

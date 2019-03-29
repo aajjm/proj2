@@ -15,22 +15,22 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface EntidadService {
-    @GET("api/ENTIDAD")
+    @GET("api/ENTIDADs")
     Call<ArrayList<ClaseEntidad>> getEntidad();
 
 
-    @GET("api/ENTIDAD/{id}")
+    @GET("api/ENTIDADs/{id}")
     Call <ClaseEntidad>getEntidadId(@Path("id")int id);
 
 
-    @GET("api/ENTIDAD/nombre/{nombre}")
+    @GET("api/ENTIDADs/nombre/{nombre}")
     Call <ClaseEntidad>getEntidadNombre(@Path("nombre")String nombre);
 
 
-    @POST("api/ENTIDAD")
+    @POST("api/ENTIDADs")
     Call <ClaseEntidad> InsertarEntidad(@Body ClaseEntidad entidad);
 
 
-    @DELETE("api/ENTIDAD")
+    @DELETE("api/ENTIDADs")
     Call<ResponseBody> deleteEntidad(@Path("id") int id);
 }
