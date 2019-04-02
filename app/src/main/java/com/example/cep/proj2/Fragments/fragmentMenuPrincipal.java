@@ -1,6 +1,7 @@
 package com.example.cep.proj2.Fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -42,7 +43,10 @@ public class fragmentMenuPrincipal extends Fragment {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     if(listener!=null){
                         listener.onEnviromentSeleccionado((ClaseMenu)GridListado.getAdapter().getItem(position));
+
                     }
+
+
                 }
             });
         }
@@ -68,12 +72,12 @@ public class fragmentMenuPrincipal extends Fragment {
                 View item = inflater.inflate(R.layout.item_menu_principal, null);
 
                ImageView imagen=(ImageView) item.findViewById(R.id.Foto);
-                //  texto = (TextView) item.findViewById(R.id.TextoTituloL1);
+
 
 
              TextView   texto2 = (TextView) item.findViewById(R.id.TextoTituloL2);
 
-                // texto.setText(this.libro.get(position).getUbicacion());
+
                 texto2.setText(AdaptadorMenuPrincipal.getEnvironments().get(position).getNombre());
                 imagen.setImageResource(AdaptadorMenuPrincipal.getEnvironments().get(position).getFoto());
 

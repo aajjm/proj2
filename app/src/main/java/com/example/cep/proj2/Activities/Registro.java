@@ -56,14 +56,41 @@ public class Registro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ClaseEntidad entidad= new ClaseEntidad();
-                entidad.setNombre(Nombre.getText().toString());
-                entidad.setDireccion(direccion.getText().toString());
-                entidad.setNIF(NIF.getText().toString());
-                entidad.setCorreo(Correo.getText().toString());
-                entidad.setAltitud(Altitud.getText().toString());
-                entidad.setLatitud(Latitud.getText().toString());
-                entidad.setContraseña(Contraseña.getText().toString());
-                entidad.setContraseña(RepContraseña.getText().toString());
+
+                if( !(Nombre.getText().toString().isEmpty()
+                        || direccion.getText().toString().isEmpty() || NIF.getText().toString().isEmpty() || Correo.getText().toString().isEmpty()
+                        || Contraseña.getText().toString().isEmpty()|| Latitud.getText().toString().isEmpty()|| Altitud.getText().toString().isEmpty())){
+
+                    entidad.setNombre(Nombre.getText().toString());
+                    entidad.setDireccion(direccion.getText().toString());
+                    entidad.setNIF(NIF.getText().toString());
+                    entidad.setCorreo(Correo.getText().toString());
+                    entidad.setAltitud(Altitud.getText().toString());
+                    entidad.setLatitud(Latitud.getText().toString());
+                    entidad.setTemporada("2018-2019");
+
+
+                    if(Contraseña.getText().toString().equals(RepContraseña.getText().toString())){
+                        entidad.setContraseña(Contraseña.getText().toString());
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(),
+                                "Contraseñas Diferentes", Toast.LENGTH_SHORT).show();
+
+                    }
+
+
+                }
+
+                
+
+                 else {
+                    Toast.makeText(getApplicationContext(),
+                            "Introduce Todos Los Datos", Toast.LENGTH_SHORT).show();
+
+                }
+
+
 
                 EntidadService entidadService = Api.getApi().create(EntidadService.class);
                 Call<ClaseEntidad> listcall= entidadService.InsertarEntidad(entidad);

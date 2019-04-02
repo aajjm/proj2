@@ -17,7 +17,6 @@ public class ClaseEntidad {
     private ArrayList<ClaseTelefono> telefono;
 
 
-
    private ArrayList<ClaseEquipo> equipo;
     public ClaseEntidad(){
 
