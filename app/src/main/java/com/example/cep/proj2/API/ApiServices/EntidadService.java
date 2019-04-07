@@ -19,12 +19,19 @@ public interface EntidadService {
     Call<ArrayList<ClaseEntidad>> getEntidad();
 
 
+    @GET("api/ENTIDADs/contraseña/{contraseña}")
+    Call<ArrayList<ClaseEntidad>> getEntidadContraseña(@Path("contraseña")String contraseña);
+    @GET("api/ENTIDADs/correo/{correo}")
+    Call<ArrayList<ClaseEntidad>> getEntidadCorreo(@Path("correo")String correo);
+
+
+
     @GET("api/ENTIDADs/{id}")
     Call <ClaseEntidad>getEntidadId(@Path("id")int id);
 
 
     @GET("api/ENTIDADs/nombre/{nombre}")
-    Call <ClaseEntidad>getEntidadNombre(@Path("nombre")String nombre);
+    Call <ArrayList<ClaseEntidad>>getEntidadNombre(@Path("nombre")String nombre);
 
 
     @POST("api/ENTIDADs")

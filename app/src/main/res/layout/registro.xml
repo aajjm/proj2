@@ -7,6 +7,20 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".Activities.Registro">
+    <VideoView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/videoprueba"/>
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:text="url"
+        android:id="@+id/url"/>
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="video"
+        android:id="@+id/video"/>
 
     <EditText
         android:id="@+id/nombre"

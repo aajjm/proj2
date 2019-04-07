@@ -101,6 +101,7 @@ public class MenuDesplegableActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_entidades) {
             CargarFragment(new fragmentEntidades());
+
         } else if (id == R.id.nav_instalaciones) {
 
         }  else if (id == R.id.nav_preguntas) {
