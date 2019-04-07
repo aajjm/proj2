@@ -33,7 +33,7 @@
         </activity>
         <activity android:name=".Activities.Registro" />
         <activity android:name=".Activities.Activity_Mapa"></activity>
-        
+        <activity android:name=".Activities.Actividades"/>
     </application>
 
 </manifest>
