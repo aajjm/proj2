@@ -21,7 +21,6 @@ public class actividades_assignadas extends Fragment {
 
     public actividades_assignadas() {
 
-
     }
 
     public static actividades_assignadas newInstance(String param1, String param2) {

@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.cep.proj2.Activities.ActivityEntidades;
 import com.example.cep.proj2.Activities.Activity_Mapa;
+import com.example.cep.proj2.Activity_Actividades;
 import com.example.cep.proj2.Adaptadores.AdaptadorMenuPrincipal;
 import com.example.cep.proj2.Clases.ClaseMenu;
 import com.example.cep.proj2.R;
@@ -55,6 +56,11 @@ public class fragmentMenuPrincipal extends Fragment {
                     }
                     else if(position==1){
                         Intent intent = new Intent(getActivity(), fragmentInstalaciones.class);
+                        startActivity(intent);
+
+                    }
+                    else if(position==3){
+                        Intent intent = new Intent(getActivity(), Activity_Actividades.class);
                         startActivity(intent);
 
                     }
