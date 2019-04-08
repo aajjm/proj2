@@ -69,7 +69,7 @@ botoneliminar.setOnClickListener(new View.OnClickListener() {
     public void onClick(View v) {
 
         EntidadService entidadService = Api.getApi().create(EntidadService.class);
-        Call<ClaseEntidad> listcall= entidadService.deleteEntidad(entidad.getId());
+        Call<ClaseEntidad> listcall= entidadService.deleteEntidad(entidad.getId(),entidad.getTemporada());
         listcall.enqueue(new Callback<ClaseEntidad>() {
             @Override
             public void onResponse(Call<ClaseEntidad> call, Response<ClaseEntidad> response) {
