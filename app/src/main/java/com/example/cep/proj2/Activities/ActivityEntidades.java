@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -11,7 +12,9 @@ import android.widget.Toast;
 import com.example.cep.proj2.API.Api;
 import com.example.cep.proj2.API.ApiServices.EntidadService;
 import com.example.cep.proj2.Clases.ClaseEntidad;
+import com.example.cep.proj2.Clases.utils;
 import com.example.cep.proj2.MensajeError;
+import com.example.cep.proj2.ModificarEntidad;
 import com.example.cep.proj2.R;
 import com.google.gson.Gson;
 
@@ -22,7 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ActivityEntidades extends AppCompatActivity {
-    private ClaseEntidad entidad= new ClaseEntidad();
+    private ClaseEntidad entidad= utils.getEntidad_conectada();
     ArrayList<ClaseEntidad> emt =new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +41,31 @@ public class ActivityEntidades extends AppCompatActivity {
         final EditText Latitud =(EditText) findViewById(R.id.latitud);
 
         final EditText video=(EditText) findViewById(R.id.video);
+final Button boton=(Button) findViewById(R.id.modificar);
 
 
+        boton.setOnClickListener(new View.OnClickListener() {
+                                     @Override
+                                     public void onClick(View v) {
+                                         Intent i = new Intent();
+                                         i.setClass(ActivityEntidades.this, ModificarEntidad.class);
+                                         startActivity(i);
+                                     }
 
+
+                                 });
+             Nombre.setText(entidad.getNombre());
+                        direccion.setText(entidad.getDireccion());
+                        NIF.setText(entidad.getNIF());
+                        Correo.setText(entidad.getCorreo());
+                        Altitud.setText(String.valueOf(entidad.getAltitud()));
+                        Latitud.setText(entidad.getLatitud()+"");
+                        video.setText(entidad.getVideo());
+    }
+}
+/*
         EntidadService entidadService = Api.getApi().create(EntidadService.class);
-        Call<ArrayList<ClaseEntidad>> listcall= entidadService.getEntidad();
+        Call<ArrayList<ClaseEntidad>> listcall= entidadService.getEntidadNombre();
         listcall.enqueue(new Callback<ArrayList<ClaseEntidad>>() {
             @Override
             public void onResponse(Call<ArrayList<ClaseEntidad>> call, Response<ArrayList<ClaseEntidad>> response) {
@@ -53,15 +76,10 @@ public class ActivityEntidades extends AppCompatActivity {
                                 "PRUEBA", Toast.LENGTH_SHORT);
 
                         toast1.show();
-                        Nombre.setText(entidad.getNombre());
-                        direccion.setText(entidad.getDireccion());
-                        NIF.setText(entidad.getNIF());
-                        Correo.setText(entidad.getCorreo());
-                        Altitud.setText(entidad.getAltitud());
-                        Latitud.setText(entidad.getLatitud()+"");
-                        video.setText(entidad.getVideo());
 
 
+
+});
 
 
 
@@ -83,9 +101,7 @@ public class ActivityEntidades extends AppCompatActivity {
             }
         });
 
-
-    }
-
+*/
 
 
 
@@ -94,7 +110,8 @@ public class ActivityEntidades extends AppCompatActivity {
 
 
 
-        }
+
+
 
 
 
