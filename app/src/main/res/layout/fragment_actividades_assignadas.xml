@@ -15,8 +15,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            >
+            android:padding="16dp">
 
             <ImageView
                 android:layout_width="100dp"
@@ -25,8 +24,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="16dp"
-                android:src="@drawable/logocsp"
-                />
+                android:src="@drawable/logocsp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -35,8 +33,7 @@
                 android:layout_toRightOf="@+id/person_photo"
                 android:layout_alignParentTop="true"
                 android:text="LOGO DE LA APP"
-                android:textSize="30sp"
-                />
+                android:textSize="30sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -44,8 +41,7 @@
                 android:id="@+id/person_age"
                 android:layout_toRightOf="@+id/person_photo"
                 android:text="Descripcion"
-                android:layout_below="@+id/person_name"
-                />
+                android:layout_below="@+id/person_name"/>
 
         </RelativeLayout>
 
@@ -56,8 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        android:id="@+id/list1"
-        >
+        android:id="@+id/list1">
 
     </ListView>
 </FrameLayout>

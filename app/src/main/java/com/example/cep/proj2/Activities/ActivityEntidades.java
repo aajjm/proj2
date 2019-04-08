@@ -36,9 +36,7 @@ public class ActivityEntidades extends AppCompatActivity {
         final EditText Correo =(EditText) findViewById(R.id.Correo);
         final EditText Altitud =(EditText) findViewById(R.id.altitud);
         final EditText Latitud =(EditText) findViewById(R.id.latitud);
-
         final EditText video=(EditText) findViewById(R.id.video);
-
 
 
         EntidadService entidadService = Api.getApi().create(EntidadService.class);
@@ -60,12 +58,8 @@ public class ActivityEntidades extends AppCompatActivity {
                         Altitud.setText(entidad.getAltitud());
                         Latitud.setText(entidad.getLatitud()+"");
                         video.setText(entidad.getVideo());
-
-
-
-
-
                         break;
+
                     case 400:
 
                         Gson gson = new Gson();
@@ -82,19 +76,8 @@ public class ActivityEntidades extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),t.getCause()+"-"+t.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
-
-
     }
-
-
-
-
-
-
-
-
-
-        }
+}
 
 
 

@@ -16,28 +16,17 @@ public class actividades_demandadas extends Fragment {
 
 
     public actividades_demandadas() {
-
+        // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-        View view = inflater.inflate(R.layout.fragment_actividades_demandadas, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 
-        //llenamos la listView
-        String[] estilos = new String[]{"Pop Rock", "Reggeton", "Pop", "Metal", "Clasica", "Electronica"};
-
-        ListView listView = (ListView) view.findViewById(R.id.listView);
-        // Inflate the layout for this fragment
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                getActivity(),
-                android.R.layout.simple_list_item_1,
-                estilos
-        );
-
-        listView.setAdapter(adapter);
-
-        return view;
+        return inflater.inflate(R.layout.fragment_actividades_demandadas, container, false);
     }
 }

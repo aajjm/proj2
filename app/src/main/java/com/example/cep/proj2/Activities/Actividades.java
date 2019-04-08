@@ -16,19 +16,20 @@ import com.example.cep.proj2.Fragments.actividades_demandadas;
 import com.example.cep.proj2.R;
 
 
-public class Actividades extends AppCompatActivity implements ActionBar.TabListener, ViewPager.OnPageChangeListener {
+public class Actividades extends AppCompatActivity  {
 
 
-    private SectionsPagerAdapter mSectionsPagerAdapter;
 
-    private ViewPager mViewPager;
+  //  private SectionsPagerAdapter mSectionsPagerAdapter;
+
+    //private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividades);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -39,12 +40,11 @@ public class Actividades extends AppCompatActivity implements ActionBar.TabListe
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
-
+        tabLayout.setupWithViewPager(mViewPager);*/
 
     }
 
-    // Métodos de la interfaz ActionBar.TabListener
+   /* // Métodos de la interfaz ActionBar.TabListener
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
         mViewPager.setCurrentItem(tab.getPosition());
@@ -60,7 +60,6 @@ public class Actividades extends AppCompatActivity implements ActionBar.TabListe
 
     }
 
-    // Métodos de la interfaz ViewPager.OnPageChangeListener
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -74,8 +73,9 @@ public class Actividades extends AppCompatActivity implements ActionBar.TabListe
     @Override
     public void onPageScrollStateChanged(int state) {
 
-    }
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    }*/
+
+   /* public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -112,13 +112,13 @@ public class Actividades extends AppCompatActivity implements ActionBar.TabListe
 
             switch (position) {
                 case 0:
-                    section = "SECTION 1";
+                    section = "Actividades assignadas";
                     break;
                 case 1:
-                    section = "SECTION 2";
+                    section = "Actividades demandadas";
                     break;
             }
             return section;
         }
-    }
+    }*/
 }
