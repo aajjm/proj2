@@ -20,8 +20,7 @@
             android:name=".Activities.MenuDesplegableActivity"
             android:icon="@drawable/logocsp"
             android:label="MenuDesplegableActivity"
-            android:theme="@style/NoActionBar"></activity>
-
+            android:theme="@style/NoActionBar" />
         <activity
             android:name=".Activities.Splash"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
@@ -32,8 +31,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.Registro" />
-        <activity android:name=".Activities.Activity_Mapa"></activity>
-        <activity android:name=".Activities.Actividades"/>
+        <activity android:name=".Activities.Activity_Mapa" />
+        <activity android:name=".Activities.ActivityEntidades"></activity>
     </application>
 
 </manifest>
