@@ -37,14 +37,14 @@ public class actividades_assignadas extends Fragment {
         View view = inflater.inflate(R.layout.fragment_actividades_assignadas, container, false);
 
         //llenamos la listView
-        String[] actividades = new String[]{"Entreno Cadete A",
-                                        "Entreno infantil",
-                                        "Entreno Senior",
-                                        "Partido benjamin",
-                                        "Entreno Cadete B",
-                                        "Entreno pre-benjamin",
-                                        "Entreno juvenil",
-                                        "Partido pre-benjamin"};
+        String[] actividades = new String[]{"Entreno Lunes Cadete A",
+                                            "Entreno Viernes infantil",
+                                            "Entreno Miercoles Senior",
+                                            "Partido Sabado benjamin",
+                                            "Entreno Martes Cadete B",
+                                            "Entreno Lunes pre-benjamin",
+                                            "Entreno Miercoles juvenil",
+                                            "Partido Jueves pre-benjamin"};
 
         ListView listView = (ListView) view.findViewById(R.id.list1);
         // Inflate the layout for this fragment

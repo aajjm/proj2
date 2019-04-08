@@ -30,7 +30,7 @@ public class actividades_demandadas extends Fragment {
         View view = inflater.inflate(R.layout.fragment_actividades_demandadas, container, false);
 
         //llenamos la listView
-        String[] actividades = new String[]{"Entreno Cadete A",
+        String[] actividades = new String[]{"Partido Senior",
                                             "partido femenino",
                                             "partido juvenil",
                                             "Entreno benjamin",
