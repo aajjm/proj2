@@ -46,7 +46,8 @@ public class ActivityEntidades extends AppCompatActivity {
             public void onResponse(Call<ArrayList<ClaseEntidad>> call, Response<ArrayList<ClaseEntidad>> response) {
                 switch (response.code()){
 
-                    case 200: entidad = response.body().get(0);
+                    case 200:
+                        entidad = response.body().get(0);
                         Toast toast1 =  Toast.makeText(getApplicationContext(),
                                 "PRUEBA", Toast.LENGTH_SHORT);
 
@@ -61,10 +62,8 @@ public class ActivityEntidades extends AppCompatActivity {
                         break;
 
                     case 400:
-
                         Gson gson = new Gson();
-                        Toast.makeText(getApplicationContext(),
-                                "Conexion mal ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Conexion mal ", Toast.LENGTH_SHORT).show();
                         MensajeError mensajeError=gson.fromJson(response.errorBody().charStream(),MensajeError.class);
                         Toast.makeText(getApplicationContext(),mensajeError.getMessage(),Toast.LENGTH_LONG).show();
                         break;

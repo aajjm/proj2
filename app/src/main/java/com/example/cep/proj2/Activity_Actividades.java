@@ -20,18 +20,18 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-public class Activity_Actividades extends AppCompatActivity {
+public class Activity_Actividades extends AppCompatActivity implements ActionBar.TabListener, ViewPager.OnPageChangeListener{
 
-   /* private SectionsPagerAdapter mSectionsPagerAdapter;
+    private SectionsPagerAdapter mSectionsPagerAdapter;
 
-    private ViewPager mViewPager;*/
+    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__actividades);
 
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -39,18 +39,18 @@ public class Activity_Actividades extends AppCompatActivity {
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);*/
+        mViewPager.setAdapter(mSectionsPagerAdapter);
 
     }
 
-  /*  @Override
+    @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
     }
 
     @Override
     public void onPageSelected(int position) {
-
+        getSupportActionBar().setSelectedNavigationItem(position);
     }
 
     @Override
@@ -108,7 +108,7 @@ public class Activity_Actividades extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
+            
             return 2;
         }
 
@@ -127,5 +127,5 @@ public class Activity_Actividades extends AppCompatActivity {
             }
             return section;
         }
-    }*/
+    }
 }
