@@ -44,16 +44,7 @@ public class ActivityEntidades extends AppCompatActivity {
 final Button boton=(Button) findViewById(R.id.modificar);
 
 
-        boton.setOnClickListener(new View.OnClickListener() {
-                                     @Override
-                                     public void onClick(View v) {
-                                         Intent i = new Intent();
-                                         i.setClass(ActivityEntidades.this, ModificarEntidad.class);
-                                         startActivity(i);
-                                     }
 
-
-                                 });
              Nombre.setText(entidad.getNombre());
                         direccion.setText(entidad.getDireccion());
                         NIF.setText(entidad.getNIF());
@@ -61,6 +52,18 @@ final Button boton=(Button) findViewById(R.id.modificar);
                         Altitud.setText(String.valueOf(entidad.getAltitud()));
                         Latitud.setText(entidad.getLatitud()+"");
                         video.setText(entidad.getVideo());
+
+
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(ActivityEntidades.this, ModificarEntidad.class);
+                startActivity(i);
+            }
+
+
+        });
     }
 }
 
