@@ -16,7 +16,6 @@ public class AdaptadorMenuPrincipal {
         lista.add(new ClaseMenu(R.mipmap.contacto1_round,"Perfil"));
         lista.add(new ClaseMenu(R.mipmap.contacto1_round,"Equipos"));
 
-
         return lista;
 
     }

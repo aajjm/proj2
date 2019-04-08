@@ -14,7 +14,7 @@
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Activity_Actividades"
+            android:name=".Activities.Activity_Actividades"
             android:label="@string/title_activity__actividades"
             android:theme="@style/NoActionBar"></activity>
         <activity

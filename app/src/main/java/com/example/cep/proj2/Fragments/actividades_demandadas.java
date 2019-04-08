@@ -27,6 +27,28 @@ public class actividades_demandadas extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_actividades_demandadas, container, false);
+        View view = inflater.inflate(R.layout.fragment_actividades_demandadas, container, false);
+
+        //llenamos la listView
+        String[] actividades = new String[]{"Entreno Cadete A",
+                                            "partido femenino",
+                                            "partido juvenil",
+                                            "Entreno benjamin",
+                                            "Partido Cadete A",
+                                            "Partido pre-benjamin",
+                                            "Partido senior",
+                                            "Partido pre-benjamin"};
+
+        ListView listView = (ListView) view.findViewById(R.id.listView);
+        // Inflate the layout for this fragment
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+          getActivity(),
+          android.R.layout.simple_list_item_1,
+          actividades
+        );
+
+        listView.setAdapter(adapter);
+
+        return view;
     }
 }

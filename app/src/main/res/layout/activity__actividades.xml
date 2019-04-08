@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".Activity_Actividades">
+    tools:context=".Activities.Activity_Actividades">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -23,7 +23,7 @@
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/PopupOverlay"
-            app:title="@string/app_name">
+            app:title="Actividades">
 
         </android.support.v7.widget.Toolbar>
 
@@ -36,19 +36,13 @@
                 android:id="@+id/tabItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_text_1" />
+                android:text="Actividades assignadas" />
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_text_2" />
-
-            <android.support.design.widget.TabItem
-                android:id="@+id/tabItem3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_text_3" />
+                android:text="Actividades demandadas" />
 
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>

@@ -81,8 +81,6 @@ public class Login extends AppCompatActivity {
                                             "Usuario Incorrect", Toast.LENGTH_SHORT).show();
                                 }
 
-
-
                                 break;
                                 case 400:
 
