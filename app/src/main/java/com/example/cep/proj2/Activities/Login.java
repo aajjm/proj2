@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.cep.proj2.API.Api;
 import com.example.cep.proj2.API.ApiServices.EntidadService;
 import com.example.cep.proj2.Clases.ClaseEntidad;
+import com.example.cep.proj2.Clases.utils;
 import com.example.cep.proj2.MensajeError;
 import com.example.cep.proj2.R;
 import com.google.gson.Gson;
@@ -69,6 +70,7 @@ public class Login extends AppCompatActivity {
                                 if(usuario.equals(entidad.getNombre().toString())&& password.equals(entidad.getContraseña().toString())){
                                     Toast.makeText(getApplicationContext(),
                                             "Usuario CORRECTO", Toast.LENGTH_SHORT).show();
+                                    utils.setEntidad_conectada(entidad);
                                     Intent i=new Intent();
                                     i.setClass(Login.this,MenuDesplegableActivity.class);
                                     startActivity(i);
