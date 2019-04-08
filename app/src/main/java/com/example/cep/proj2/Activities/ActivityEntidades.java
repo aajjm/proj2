@@ -63,45 +63,6 @@ final Button boton=(Button) findViewById(R.id.modificar);
                         video.setText(entidad.getVideo());
     }
 }
-/*
-        EntidadService entidadService = Api.getApi().create(EntidadService.class);
-        Call<ArrayList<ClaseEntidad>> listcall= entidadService.getEntidadNombre();
-        listcall.enqueue(new Callback<ArrayList<ClaseEntidad>>() {
-            @Override
-            public void onResponse(Call<ArrayList<ClaseEntidad>> call, Response<ArrayList<ClaseEntidad>> response) {
-                switch (response.code()){
-
-                    case 200: entidad = response.body().get(0);
-                        Toast toast1 =  Toast.makeText(getApplicationContext(),
-                                "PRUEBA", Toast.LENGTH_SHORT);
-
-                        toast1.show();
-
-
-
-});
-
-
-
-                        break;
-                    case 400:
-
-                        Gson gson = new Gson();
-                        Toast.makeText(getApplicationContext(),
-                                "Conexion mal ", Toast.LENGTH_SHORT).show();
-                        MensajeError mensajeError=gson.fromJson(response.errorBody().charStream(),MensajeError.class);
-                        Toast.makeText(getApplicationContext(),mensajeError.getMessage(),Toast.LENGTH_LONG).show();
-                        break;
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<ClaseEntidad>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),t.getCause()+"-"+t.getMessage(),Toast.LENGTH_LONG).show();
-            }
-        });
-
-*/
 
 
 
