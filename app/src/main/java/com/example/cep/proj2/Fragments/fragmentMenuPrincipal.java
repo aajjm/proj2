@@ -44,28 +44,37 @@ public class fragmentMenuPrincipal extends Fragment {
             GridListado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Intent intent;
+                    
+                    switch (position)
+                    {
+                        case 0:
+                            intent = new Intent(getActivity(), Activity_Mapa.class);
+                            startActivity(intent);
+                            break;
+
+                        case 1:
+                            intent = new Intent(getActivity(), fragmentInstalaciones.class);
+                            startActivity(intent);
+                            break;
+
+                        case 2:
+
+                            break;
+                        case 3:
+                            intent = new Intent(getActivity(), Activity_Actividades.class);
+                            startActivity(intent);
+                            break;
+
+                        case 4:
+                            intent = new Intent(getActivity(), ActivityEntidades.class);
+                            startActivity(intent);
+                            break;
+
+                    }
                     if(listener!=null){
                         listener.onEnviromentSeleccionado((ClaseMenu)GridListado.getAdapter().getItem(position));
-
-                    }
-                    if(position==0){
-                        Intent intent = new Intent(getActivity(), Activity_Mapa.class);
-                        startActivity(intent);
-
-                    }
-                    else if(position==1){
-                        Intent intent = new Intent(getActivity(), fragmentInstalaciones.class);
-                        startActivity(intent);
-
-                    }
-                    else if(position==3){
-                        Intent intent = new Intent(getActivity(), Activity_Actividades.class);
-                        startActivity(intent);
-
-                    }
-                    else if(position==4){
-                        Intent intent = new Intent(getActivity(), ActivityEntidades.class);
-                        startActivity(intent);
 
                     }
                 }
