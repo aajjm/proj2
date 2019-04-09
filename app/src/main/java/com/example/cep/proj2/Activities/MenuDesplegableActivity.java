@@ -94,8 +94,9 @@ public class MenuDesplegableActivity extends AppCompatActivity
 
         String message = "You click fragment ";
         if (id == R.id.nav_actividades) {
-
-            CargarFragment(new fragmentActividades());
+            Intent i=new Intent();
+            i.setClass(MenuDesplegableActivity.this,Activity_Actividades.class);
+            startActivity(i);
 
         } else if (id == R.id.nav_entidades) {
             Intent i=new Intent();
