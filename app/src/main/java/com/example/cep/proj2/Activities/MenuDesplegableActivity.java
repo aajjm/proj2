@@ -83,10 +83,6 @@ public class MenuDesplegableActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-
-
-
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -109,7 +105,6 @@ public class MenuDesplegableActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
