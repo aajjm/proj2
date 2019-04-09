@@ -41,6 +41,6 @@ public interface EntidadService {
     Call <ClaseEntidad> InsertarEntidad(@Body ClaseEntidad entidad);
 
 
-    @DELETE("api/ENTIDADs/{id}")
-    Call<ClaseEntidad> deleteEntidad(@Path("id") int id);
+    @DELETE("api/ENTIDADs/{id}/{temporada}")
+    Call<ClaseEntidad> deleteEntidad(@Path("id") int id,@Path("temporada")String temporada);
 }
