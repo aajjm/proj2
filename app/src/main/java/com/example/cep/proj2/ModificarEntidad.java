@@ -15,6 +15,7 @@ import android.widget.VideoView;
 import com.example.cep.proj2.API.Api;
 import com.example.cep.proj2.API.ApiServices.EntidadService;
 import com.example.cep.proj2.Activities.ActivityEntidades;
+import com.example.cep.proj2.Activities.Login;
 import com.example.cep.proj2.Activities.MenuDesplegableActivity;
 import com.example.cep.proj2.Activities.Registro;
 import com.example.cep.proj2.Clases.ClaseEntidad;
@@ -81,7 +82,7 @@ botoneliminar.setOnClickListener(new View.OnClickListener() {
 
                         toast1.show();
                         Intent i=new Intent();
-                        i.setClass(ModificarEntidad.this,MenuDesplegableActivity.class);
+                        i.setClass(ModificarEntidad.this, Login.class);
                         startActivity(i);
 
                         break;
