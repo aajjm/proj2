@@ -30,11 +30,11 @@ public class fragmentInstalaciones extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_instalaciones, container, false);
 
-        InstalacionService instalacionService = Api.getApi().create (InstalacionService.class);
+        //InstalacionService instalacionService = Api.getApi().create (InstalacionService.class);
 
-        Call<ArrayList<ClaseInstalacion>> callInstalaciones = instalacionService.getInstalacion();
-        callInstalaciones.enqueue(new Callback<ArrayList<ClaseInstalacion>>() {
-            @Override
+        //Call<ArrayList<ClaseInstalacion>> callInstalaciones = instalacionService.getInstalacion();
+        //callInstalaciones.enqueue(new Callback<ArrayList<ClaseInstalacion>>() {
+          /*  @Override
             public void onResponse(Call<ArrayList<ClaseInstalacion>> call, Response<ArrayList<ClaseInstalacion>> response) {
 
             }
@@ -43,7 +43,7 @@ public class fragmentInstalaciones extends Fragment {
             public void onFailure(Call<ArrayList<ClaseInstalacion>> call, Throwable t) {
 
             }
-        });
+        });*/
     }
 
 
