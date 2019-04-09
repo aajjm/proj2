@@ -36,7 +36,7 @@ public class Registro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro);
 
-     final EditText  Nombre =(EditText) findViewById(R.id.nombre);
+        final EditText  Nombre =(EditText) findViewById(R.id.nombre);
         final EditText direccion=(EditText) findViewById(R.id.direccion);
         final EditText NIF =(EditText) findViewById(R.id.NIF);
         final EditText Correo =(EditText) findViewById(R.id.Correo);

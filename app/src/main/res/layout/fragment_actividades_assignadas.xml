@@ -6,12 +6,28 @@
     android:orientation="vertical"
     tools:context=".Activities.Activity_Actividades">
 
-        <ListView
+       <!-- <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/list1">
 
 
-        </ListView>
+        </ListView>-->
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/list1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100sp"
+                android:id="@+id/nombreActividad"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100sp"
+                android:id="@+id/instalacion"/>
+
+        </android.support.v7.widget.CardView>
 
 </FrameLayout>

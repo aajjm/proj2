@@ -43,22 +43,22 @@ public class ActivityEntidades extends AppCompatActivity {
         final EditText video=(EditText) findViewById(R.id.video);
         final Button boton=(Button) findViewById(R.id.modificar);
 
-         Nombre.setText(entidad.getNombre());
-                    direccion.setText(entidad.getDireccion());
-                    NIF.setText(entidad.getNIF());
-                    Correo.setText(entidad.getCorreo());
-                    Altitud.setText(String.valueOf(entidad.getAltitud()));
-                    Latitud.setText(entidad.getLatitud()+"");
-                    video.setText(entidad.getVideo());
+        Nombre.setText(entidad.getNombre());
+        direccion.setText(entidad.getDireccion());
+        NIF.setText(entidad.getNIF());
+        Correo.setText(entidad.getCorreo());
+        Altitud.setText(String.valueOf(entidad.getAltitud()));
+        Latitud.setText(entidad.getLatitud()+"");
+        video.setText(entidad.getVideo());
 
 
-        boton.setOnClickListener(new View.OnClickListener() {
+         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();
                 i.setClass(ActivityEntidades.this, ModificarEntidad.class);
                 startActivity(i);
-            }
+             }
 
 
         });

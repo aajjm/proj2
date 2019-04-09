@@ -46,7 +46,7 @@ public class fragmentMenuPrincipal extends Fragment {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                     Intent intent;
-                    
+
                     switch (position)
                     {
                         case 0:
@@ -72,6 +72,9 @@ public class fragmentMenuPrincipal extends Fragment {
                             startActivity(intent);
                             break;
 
+                        case 5:
+
+                            break;
                     }
                     if(listener!=null){
                         listener.onEnviromentSeleccionado((ClaseMenu)GridListado.getAdapter().getItem(position));

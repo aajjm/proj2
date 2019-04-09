@@ -9,16 +9,25 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.TextView;
 
+import com.example.cep.proj2.Clases.ClaseActividad;
+import com.example.cep.proj2.Clases.ClaseEntidad;
+import com.example.cep.proj2.Clases.utils;
 import com.example.cep.proj2.Fragments.actividades_assignadas;
 import com.example.cep.proj2.Fragments.actividades_demandadas;
 import com.example.cep.proj2.R;
 
+import java.util.ArrayList;
+
 public class Activity_Actividades extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
     private ViewPager mViewPager;
+
+    private ClaseActividad actividad = utils.getActividad_conectada();
+    ArrayList<ClaseActividad> act =new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +42,12 @@ public class Activity_Actividades extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+        final TextView Nombre =(TextView) findViewById(R.id.nombreActividad);
+        final TextView instalacion =(TextView) findViewById(R.id.instalacion);
+
+        Nombre.setText(actividad.getNombre_actividad());
+        instalacion.setText(actividad.getId_espacios().toString());
 
     }
     public static class PlaceholderFragment extends Fragment {

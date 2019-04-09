@@ -40,7 +40,7 @@ public class actividades_demandadas extends Fragment {
                                             "Partido pre-benjamin"};
 
         ListView listView = (ListView) view.findViewById(R.id.listView);
-        // Inflate the layout for this fragment
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
           getActivity(),
           android.R.layout.simple_list_item_1,
