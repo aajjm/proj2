@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.cep.proj2.Fragments.fragmentInstalaciones;
 import com.example.cep.proj2.Fragments.fragmentMenuPrincipal;
 import com.example.cep.proj2.Fragments.fragmentActividades;
 import com.example.cep.proj2.Fragments.fragmentEntidades;
@@ -102,7 +103,7 @@ public class MenuDesplegableActivity extends AppCompatActivity
             startActivity(i);
 
         } else if (id == R.id.nav_instalaciones) {
-            
+            CargarFragment(new fragmentInstalaciones());
 
         }  else if (id == R.id.nav_preguntas) {
             CargarFragment(new frangmentPreguntas());
