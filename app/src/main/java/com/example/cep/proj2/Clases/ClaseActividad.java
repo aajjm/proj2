@@ -13,6 +13,9 @@ public class ClaseActividad {
     private ArrayList<ClaseAdministrador> id_administrador;
     private int parte_pista;
 
+    public ClaseActividad(String nombre_actividad) {
+    }
+
     public int getId() {
         return id;
     }

@@ -22,6 +22,9 @@ import java.util.ArrayList;
 
 public class actividades_assignadas extends Fragment {
 
+    private ClaseActividad actividad = utils.getActividad_conectada();
+    ArrayList<ClaseActividad> act =new ArrayList<>();
+
     public actividades_assignadas() {
     }
 
@@ -37,7 +40,7 @@ public class actividades_assignadas extends Fragment {
         View view = inflater.inflate(R.layout.fragment_actividades_assignadas, container, false);
 
         //llenamos la listView
-        String[] actividades = new String[]{"Entreno Lunes Cadete A",
+        /*String[] actividades = new String[]{"Entreno Lunes Cadete A",
                                             "Entreno Viernes infantil",
                                             "Entreno Miercoles Senior",
                                             "Partido Sabado benjamin",
@@ -54,7 +57,8 @@ public class actividades_assignadas extends Fragment {
                 actividades
         );
 
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
+
 
         return view;
     }

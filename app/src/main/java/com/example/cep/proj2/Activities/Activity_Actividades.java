@@ -26,9 +26,6 @@ public class Activity_Actividades extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
 
-    private ClaseActividad actividad = utils.getActividad_conectada();
-    ArrayList<ClaseActividad> act =new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,18 +40,13 @@ public class Activity_Actividades extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        final TextView Nombre =(TextView) findViewById(R.id.nombreActividad);
-        final TextView instalacion =(TextView) findViewById(R.id.instalacion);
-
-        Nombre.setText(actividad.getNombre_actividad());
-        instalacion.setText(actividad.getId_espacios().toString());
-
     }
+
     public static class PlaceholderFragment extends Fragment {
 
         private static final String ARG_SECTION_NUMBER = "section_number";
-
         public PlaceholderFragment() {
+
         }
 
         public static PlaceholderFragment newInstance(int sectionNumber) {
@@ -100,7 +92,8 @@ public class Activity_Actividades extends AppCompatActivity {
 
             String section = null;
 
-            switch (position) {
+            switch (position)
+            {
                 case 0:
                     section = "Actividades assignadas";
                     break;

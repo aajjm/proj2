@@ -34,10 +34,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.Registro" />
-        <activity android:name=".Activities.Activity_Mapa" />
-        <activity android:name=".Activities.ActivityEntidades" />
-        <activity android:name=".ModificarEntidad" />
+        <activity android:name=".Activities.Registro"/>
+        <activity android:name=".Activities.Activity_Mapa"/>
+        <activity android:name=".Activities.ActivityEntidades"/>
+        <activity android:name=".ModificarEntidad"/>
+        <activity android:name=".Activities.Actividades"/>
     </application>
-
 </manifest>

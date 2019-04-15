@@ -13,7 +13,7 @@ public class utils {
         utils.entidad_conectada = entidad_conectada;
     }
     //endregion
-    
+
 //region CLASE ACTIVIDAD
     public static ClaseActividad actividad_conectada;
     public static ClaseActividad getActividad_conectada() {
