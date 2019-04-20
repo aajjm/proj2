@@ -81,7 +81,6 @@ public class fragmentMenuPrincipal extends Fragment {
                     }
                     if(listener!=null){
                         listener.onEnviromentSeleccionado((ClaseMenu)GridListado.getAdapter().getItem(position));
-
                     }
                 }
             });
@@ -122,6 +121,4 @@ public class fragmentMenuPrincipal extends Fragment {
             }
 
         }
-
-
     }
