@@ -1,124 +1,131 @@
 package com.example.cep.proj2.Activities;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Spinner;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
-import com.example.cep.proj2.Fragments.actividades_assignadas;
-import com.example.cep.proj2.Fragments.actividades_demandadas;
+import com.example.cep.proj2.API.Api;
+import com.example.cep.proj2.API.ApiServices.ActividadDemandadaService;
+import com.example.cep.proj2.API.ApiServices.ActividadService;
+import com.example.cep.proj2.API.ApiServices.HorarioActividadesDemandadas;
+import com.example.cep.proj2.Clases.ClaseActividad;
+import com.example.cep.proj2.Clases.ClaseActividadDemandada;
+import com.example.cep.proj2.Clases.ClaseEspacio;
+import com.example.cep.proj2.MensajeError;
 import com.example.cep.proj2.R;
+import com.google.gson.Gson;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class Actividades extends AppCompatActivity  {
 
-
-
-  //  private SectionsPagerAdapter mSectionsPagerAdapter;
-
-    //private ViewPager mViewPager;
+   // private List<ClaseActividadDemandada> actividadDemandada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_actividades);
+        setContentView(R.layout.nueva_actividades);
 
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        final EditText nombre = (EditText) findViewById(R.id.nombre);
+        final RadioButton entrenamiento = (RadioButton) findViewById(R.id.RBentrenament);
+        final RadioButton partido = (RadioButton) findViewById(R.id.RBpartido);
+        final Spinner espacios = (Spinner) findViewById(R.id.espacios);
+        final Spinner equipos = (Spinner) findViewById(R.id.equipos);
+        final EditText duracion = (EditText) findViewById(R.id.duracionAct);
+        final EditText cantidadDias = (EditText) findViewById(R.id.CantidadDias);
+        final TimePicker horaEmpieza = (TimePicker) findViewById(R.id.horaEmpieza);
+        final TimePicker horaFinal = (TimePicker) findViewById(R.id.horaTermina);
+        final RadioButton lunes = (RadioButton) findViewById(R.id.RBlunes);
+        final RadioButton martes = (RadioButton) findViewById(R.id.RBmartes);
+        final RadioButton miercoles = (RadioButton) findViewById(R.id.RBmiercoles);
+        final RadioButton jueves = (RadioButton) findViewById(R.id.RBjueves);
+        final RadioButton viernes = (RadioButton) findViewById(R.id.RBviernes);
+        final RadioButton sabado = (RadioButton) findViewById(R.id.RBsabado);
+        final RadioButton domingo = (RadioButton) findViewById(R.id.RBdomingo);
+        final Spinner partes = (Spinner) findViewById(R.id.partes);
+        Button enviarAct = (Button) findViewById(R.id.aceptarActividad);
 
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+        horaEmpieza.setIs24HourView(true);
+        horaFinal.setIs24HourView(true);
+        horaEmpieza.setOnTimeChangedListener ( new TimePicker.OnTimeChangedListener () {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);*/
-
-    }
-
-   /* // Métodos de la interfaz ActionBar.TabListener
-    @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-        mViewPager.setCurrentItem(tab.getPosition());
-    }
-
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-    }
-
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-    }
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-        getSupportActionBar().setSelectedNavigationItem(position);
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }*/
-
-   /* public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-
-            Fragment tabFragment = null;
-
-            switch (position){
-                case 0:
-                    tabFragment = new actividades_assignadas();
-                    break;
-                case 1:
-                    tabFragment = new actividades_demandadas();
-                    break;
             }
-            return tabFragment;
-        }
+        });
+        enviarAct.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View v) {
+                ClaseActividadDemandada actividadDemandada = new ClaseActividadDemandada();
 
-        //--------CANTIDAD DE PESTAÑAS--------//
-        @Override
-        public int getCount() {
-            // Show 2 total pages.
-            return 2;
-        }
+                if( !(  nombre.getText().toString().isEmpty() || entrenamiento.isSelected()|| entrenamiento.getText().toString().isEmpty() || partido.getText().toString().isEmpty()||
+                         duracion.getText().toString().isEmpty()|| cantidadDias.getText().toString().isEmpty()|| lunes.isSelected()|| martes.isSelected()|| miercoles.isSelected()||
+                         jueves.isSelected() || viernes.isSelected() || sabado.isSelected() || domingo.isSelected())) {
 
-        //--------TITULOS PESTAÑAS---------//
-        @Override
-        public CharSequence getPageTitle(int position) {
+                     actividadDemandada.setNombre_actividades_demandadas(nombre.getText().toString());
+                     actividadDemandada.setTipo_entrenamiento(entrenamiento.isChecked());
+                     actividadDemandada.setId_espacio(espacios.getId());
+                     actividadDemandada.setId_equipo(equipos.getId());
+                     actividadDemandada.setDuracion(Float.parseFloat(duracion.getText().toString()));
+                     actividadDemandada.setDias_semanales(Integer.parseInt(cantidadDias.getText().toString()));
+                     //actividadDemandada.setIntervalo_horario(horaEmpieza.is24HourView());
+                    //actividadDemandada.setDias_favorables();
+                     actividadDemandada.setPartes_pista_demandada(partes.getId());
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),
+                            "Introduce Todos Los Datos", Toast.LENGTH_SHORT).show();
+                }
 
-            String section = null;
+                ActividadDemandadaService actividadDemandadaService = Api.getApi().create(ActividadDemandadaService.class); // para coger los datos
+                //para acceder a los datos
+                Call<ClaseActividadDemandada> listaActividadesDemandadas  = actividadDemandadaService.InsertarActividadDemandada(actividadDemandada);
+                listaActividadesDemandadas.enqueue(new Callback<ClaseActividadDemandada>() {
+                    @Override
+                    public void onResponse(Call<ClaseActividadDemandada> call, Response<ClaseActividadDemandada> response) {
+                        //cuando va bien
+                        switch (response.code()){
 
-            switch (position) {
-                case 0:
-                    section = "Actividades assignadas";
-                    break;
-                case 1:
-                    section = "Actividades demandadas";
-                    break;
+                            case 201:
+                                Toast toast1 =  Toast.makeText(getApplicationContext(),"creada", Toast.LENGTH_SHORT);
+                                toast1.show();
+                                Intent i=new Intent();
+                                i.setClass(Actividades.this,MenuDesplegableActivity.class);
+                                startActivity(i);
+                                break;
+
+                            case 400:
+                                Gson gson = new Gson();
+                                MensajeError mensajeError=gson.fromJson(response.errorBody().charStream(),MensajeError.class);
+                                Toast.makeText(getApplicationContext(),mensajeError.getMessage(),Toast.LENGTH_LONG).show();
+                                break;
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ClaseActividadDemandada> call, Throwable t) {
+                        //cuando va mal
+                        Toast.makeText(getApplicationContext(),t.getCause() + " - " + t.getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                });
             }
-            return section;
-        }
-    }*/
+        });
+    }
 }

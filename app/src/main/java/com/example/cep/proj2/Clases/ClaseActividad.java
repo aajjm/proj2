@@ -13,7 +13,18 @@ public class ClaseActividad {
     private ArrayList<ClaseAdministrador> id_administrador;
     private int parte_pista;
 
-    public ClaseActividad(String nombre_actividad) {
+    public ClaseActividad() {
+    }
+
+    public ClaseActividad(int id, String nombre_actividad, boolean tipo_entrenament, ArrayList<ClaseEspacio> id_espacios, ArrayList<ClaseEquipo> id_equipos, ArrayList<ClaseActividadDemandada> id_actividad_demandada, ArrayList<ClaseAdministrador> id_administrador, int parte_pista) {
+        this.id = id;
+        this.nombre_actividad = nombre_actividad;
+        this.tipo_entrenament = tipo_entrenament;
+        this.id_espacios = id_espacios;
+        this.id_equipos = id_equipos;
+        this.id_actividad_demandada = id_actividad_demandada;
+        this.id_administrador = id_administrador;
+        this.parte_pista = parte_pista;
     }
 
     public int getId() {

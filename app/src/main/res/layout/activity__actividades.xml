@@ -61,4 +61,10 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="1"
+        android:id="@+id/gridActividades">
+    </GridView>
 </android.support.design.widget.CoordinatorLayout>

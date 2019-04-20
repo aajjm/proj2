@@ -7,11 +7,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.cep.proj2.Adaptadores.Adaptador_Actividades_Assignadas;
 import com.example.cep.proj2.Clases.ClaseActividad;
 import com.example.cep.proj2.Clases.ClaseEntidad;
 import com.example.cep.proj2.Clases.utils;
@@ -39,27 +43,15 @@ public class actividades_assignadas extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_actividades_assignadas, container, false);
 
-        //llenamos la listView
-        /*String[] actividades = new String[]{"Entreno Lunes Cadete A",
-                                            "Entreno Viernes infantil",
-                                            "Entreno Miercoles Senior",
-                                            "Partido Sabado benjamin",
-                                            "Entreno Martes Cadete B",
-                                            "Entreno Lunes pre-benjamin",
-                                            "Entreno Miercoles juvenil",
-                                            "Partido Jueves pre-benjamin"};
+        GridView gridView = (GridView) getView().findViewById(R.id.gridActividades);
+        gridView.setAdapter(new Adaptador_Actividades_Assignadas(this));
 
-        ListView listView = (ListView) view.findViewById(R.id.list1);
-        // Inflate the layout for this fragment
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                getActivity(),
-                android.R.layout.simple_list_item_1,
-                actividades
-        );
-
-        listView.setAdapter(adapter);*/
-
-
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Toast.makeText(AccionFragment.this, "" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
         return view;
     }
 }

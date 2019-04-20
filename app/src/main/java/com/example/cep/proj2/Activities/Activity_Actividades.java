@@ -81,15 +81,15 @@ public class Activity_Actividades extends AppCompatActivity {
 
         //--------CANTIDAD DE PESTAÑAS--------//
         @Override
-        public int getCount() {
-            // Show 2 total pages.
+        public int getCount()
+        {
             return 2;
         }
 
         //--------TITULOS PESTAÑAS---------//
         @Override
-        public CharSequence getPageTitle(int position) {
-
+        public CharSequence getPageTitle(int position)
+        {
             String section = null;
 
             switch (position)

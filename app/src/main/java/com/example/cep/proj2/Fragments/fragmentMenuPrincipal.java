@@ -13,6 +13,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.cep.proj2.Activities.Actividades;
 import com.example.cep.proj2.Activities.ActivityEntidades;
 import com.example.cep.proj2.Activities.Activity_Mapa;
 import com.example.cep.proj2.Activities.Activity_Actividades;
@@ -60,10 +61,12 @@ public class fragmentMenuPrincipal extends Fragment {
                             break;
 
                         case 2:
-
+                            intent = new Intent(getActivity(), Actividades.class);
+                            startActivity(intent);
                             break;
+
                         case 3:
-                            intent = new Intent(getActivity(), Activity_Actividades.class);
+                            intent = new Intent(getActivity(), fragmentActividades.class);
                             startActivity(intent);
                             break;
 

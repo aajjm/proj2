@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activities.Actividades">
+
+        <EditText
+            android:id="@+id/nombre"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/ic_person_outline_black_24dp"
+            android:hint="Nombre actividad" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/RBentrenament"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Entrenamiento" />
+
+            <RadioButton
+                android:id="@+id/RBpartido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Partido" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/espacios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></Spinner>
+
+            <Spinner
+                android:id="@+id/equipos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></Spinner>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/duracionAct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="Duracion actividad" />
+
+            <EditText
+                android:id="@+id/CantidadDias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Candtidad de dias" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TimePicker
+                android:id="@+id/horaEmpieza"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:timePickerMode="spinner"></TimePicker>
+
+            <TimePicker
+                android:id="@+id/horaTermina"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:timePickerMode="spinner"></TimePicker>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dias Favorables:  " />
+
+            <RadioButton
+                android:id="@+id/RBlunes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lunes" />
+
+            <RadioButton
+                android:id="@+id/RBmartes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Martes" />
+
+            <RadioButton
+                android:id="@+id/RBmiercoles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Miercoles" />
+
+            <RadioButton
+                android:id="@+id/RBjueves"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jueves" />
+
+            <RadioButton
+                android:id="@+id/RBviernes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Viernes" />
+
+            <RadioButton
+                android:id="@+id/RBsabado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sabado" />
+
+            <RadioButton
+                android:id="@+id/RBdomingo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Domingo" />
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/partes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center">
+        </Spinner>
+
+    <Button
+        android:id="@+id/aceptarActividad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="Enviar solicitud"/>
+</LinearLayout>

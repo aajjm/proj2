@@ -7,6 +7,7 @@
 
     <application
         android:allowBackup="true"
+        android:screenOrientation="landscape"
         android:icon="@mipmap/ic_launcher"
         android:label="CEPSports"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -15,18 +16,22 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".Activities.Activity_Actividades"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity__actividades"
             android:theme="@style/NoActionBar"></activity>
         <activity
             android:name=".Activities.Login"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
             android:name=".Activities.MenuDesplegableActivity"
+            android:screenOrientation="landscape"
             android:icon="@drawable/logocsp"
             android:label="MenuDesplegableActivity"
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".Activities.Splash"
+            android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,10 +39,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.Registro"/>
-        <activity android:name=".Activities.Activity_Mapa"/>
-        <activity android:name=".Activities.ActivityEntidades"/>
-        <activity android:name=".ModificarEntidad"/>
-        <activity android:name=".Activities.Actividades"/>
+        <activity android:name=".Activities.Registro"
+                  android:screenOrientation="landscape"/>
+        <activity android:name=".Activities.Activity_Mapa"
+                  android:screenOrientation="landscape"/>
+        <activity android:name=".Activities.ActivityEntidades"
+                  android:screenOrientation="landscape"/>
+        <activity android:name=".ModificarEntidad"
+                  android:screenOrientation="landscape"/>
+        <activity android:name=".Activities.Actividades"
+                  android:screenOrientation="landscape"/>
     </application>
 </manifest>
