@@ -34,8 +34,8 @@ public interface EntidadService {
     @GET("api/ENTIDADs/nombre/{nombre}")
     Call <ArrayList<ClaseEntidad>>getEntidadNombre(@Path("nombre")String nombre);
 
-    @PUT("api/ENTIDADs")
-    Call <ArrayList<ClaseEntidad>>getModificarEntidad(@Path("id")int id ,@Body ClaseEntidad entidad);
+    @PUT("api/ENTIDADs/{id}/{temporada}")
+    Call <ClaseEntidad>getModificarEntidad(@Path("id")int id ,@Path("temporada")String temporada,@Body ClaseEntidad entidad);
 
     @POST("api/ENTIDADs")
     Call <ClaseEntidad> InsertarEntidad(@Body ClaseEntidad entidad);

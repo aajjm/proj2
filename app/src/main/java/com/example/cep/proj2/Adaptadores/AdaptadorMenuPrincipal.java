@@ -9,7 +9,7 @@ public class AdaptadorMenuPrincipal {
     public static ArrayList<ClaseMenu> getEnvironments()
     {
         ArrayList<ClaseMenu> lista=new ArrayList<>();
-        lista.add(new ClaseMenu(R.mipmap.contacto1_round,"Mapa Instalaciones"));
+        lista.add(new ClaseMenu(R.drawable.trophygrande,"Mapa Instalaciones"));
         lista.add(new ClaseMenu(R.mipmap.contacto1_round,"Instalaciones"));
         lista.add(new ClaseMenu(R.mipmap.contacto1_round,"Nueva Actividad"));
         lista.add(new ClaseMenu(R.mipmap.contacto1_round,"Consultar Actividades"));

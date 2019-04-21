@@ -100,10 +100,10 @@
         android:inputType="textPassword"
         />
         <Button
-            android:id="@+id/registrar"
+            android:id="@+id/modificarr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Registrar"/>
+            android:text="modificar"/>
         <Button
             android:id="@+id/eliminar"
             android:layout_width="wrap_content"

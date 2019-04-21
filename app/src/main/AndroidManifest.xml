@@ -12,16 +12,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+
         android:usesCleartextTraffic="true">
         <activity
+            android:screenOrientation="landscape"
             android:name=".Activities.Login"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
+            android:screenOrientation="landscape"
             android:name=".Activities.MenuDesplegableActivity"
             android:icon="@drawable/logocsp"
             android:label="MenuDesplegableActivity"
             android:theme="@style/NoActionBar" />
         <activity
+            android:screenOrientation="landscape"
             android:name=".Activities.Splash"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             <intent-filter>
@@ -30,10 +34,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.Registro" />
-        <activity android:name=".Activities.Activity_Mapa" />
-        <activity android:name=".Activities.ActivityEntidades" />
-        <activity android:name=".ModificarEntidad"></activity>
+        <activity android:name=".Activities.Registro"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".Activities.Activity_Mapa"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".Activities.ActivityEntidades"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".ModificarEntidad"
+            android:screenOrientation="landscape">
+
+        </activity>
     </application>
 
 </manifest>

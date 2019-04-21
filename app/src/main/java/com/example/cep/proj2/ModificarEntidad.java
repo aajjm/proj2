@@ -15,6 +15,7 @@ import android.widget.VideoView;
 import com.example.cep.proj2.API.Api;
 import com.example.cep.proj2.API.ApiServices.EntidadService;
 import com.example.cep.proj2.Activities.ActivityEntidades;
+import com.example.cep.proj2.Activities.Login;
 import com.example.cep.proj2.Activities.MenuDesplegableActivity;
 import com.example.cep.proj2.Activities.Registro;
 import com.example.cep.proj2.Clases.ClaseEntidad;
@@ -50,7 +51,7 @@ public class ModificarEntidad extends AppCompatActivity {
         final EditText RepContraseña =(EditText) findViewById(R.id.repcontraseña);
 
         final Button botoneliminar=(Button) findViewById(R.id.eliminar);
-        final Button boton=(Button) findViewById(R.id.modificar);
+        final Button boton=(Button) findViewById(R.id.modificarr);
         video=(EditText) findViewById(R.id.video);
         videoCOmpleto=(VideoView) findViewById(R.id.videoprueba);
 
@@ -81,7 +82,7 @@ botoneliminar.setOnClickListener(new View.OnClickListener() {
 
                         toast1.show();
                         Intent i=new Intent();
-                        i.setClass(ModificarEntidad.this,MenuDesplegableActivity.class);
+                        i.setClass(ModificarEntidad.this,Login.class);
                         startActivity(i);
 
                         break;
@@ -104,7 +105,7 @@ botoneliminar.setOnClickListener(new View.OnClickListener() {
 
 
 
-    /*  boton.setOnClickListener(new View.OnClickListener() {
+     boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -149,13 +150,13 @@ botoneliminar.setOnClickListener(new View.OnClickListener() {
 
 
             EntidadService entidadService = Api.getApi().create(EntidadService.class);
-            Call<ArrayList<ClaseEntidad>> listcall= entidadService.getModificarEntidad(entidad.getId(),entidad);
-                listcall.enqueue(new Callback<ArrayList<ClaseEntidad>>() {
+            Call<ClaseEntidad> listcall= entidadService.getModificarEntidad(entidad.getId(),entidad.getTemporada(),entidad);
+                listcall.enqueue(new Callback<ClaseEntidad>() {
                 @Override
-                public void onResponse(Call<ArrayList<ClaseEntidad>> call, Response<ArrayList<ClaseEntidad>> response) {
+                public void onResponse(Call<ClaseEntidad> call, Response<ClaseEntidad> response) {
                     switch (response.code()){
 
-                        case 200:
+                        case 204:
                             Toast toast1 =  Toast.makeText(getApplicationContext(),
                                     "PRUEBA", Toast.LENGTH_SHORT);
 
@@ -175,12 +176,12 @@ botoneliminar.setOnClickListener(new View.OnClickListener() {
                 }
 
                 @Override
-                public void onFailure(Call<ArrayList<ClaseEntidad>> call, Throwable t) {
+                public void onFailure(Call<ClaseEntidad> call, Throwable t) {
                     Toast.makeText(getApplicationContext(),t.getCause()+"-"+t.getMessage(),Toast.LENGTH_LONG).show();
                 }
             });
         }
-    });*/
+    });
 
 
 }

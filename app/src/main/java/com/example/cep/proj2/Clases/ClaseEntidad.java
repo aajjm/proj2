@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClaseEntidad {
-    private int id;
+    public int id;
     private String nombre;
-    private String temporada;
+    public String temporada;
     private  String direccion;
     private String NIF;
     private String correo;

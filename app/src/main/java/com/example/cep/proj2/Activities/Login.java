@@ -51,11 +51,11 @@ public class Login extends AppCompatActivity {
            //   startActivity(i);
 
                 if(usuario.endsWith(".com")){
-                    usuario = usuario.split(".")[0];
+                   usuario = usuario.replaceFirst(".com","");
                 }
 
                EntidadService entidadService = Api.getApi().create(EntidadService.class);
-                Call<ArrayList<ClaseEntidad>> listcall= entidadService.getEntidadNombre(usuario);
+                Call<ArrayList<ClaseEntidad>> listcall= entidadService.getEntidadCorreo(usuario);
                 listcall.enqueue(new Callback<ArrayList<ClaseEntidad>>() {
                     @Override
                     public void onResponse(Call<ArrayList<ClaseEntidad>> call, Response<ArrayList<ClaseEntidad>> response) {
@@ -67,7 +67,8 @@ public class Login extends AppCompatActivity {
 
                                 toast1.show();
 
-                                if(usuario.equals(entidad.getNombre().toString())&& password.equals(entidad.getContraseña().toString())){
+                                usuario += ".com";
+                                if(usuario.equals(entidad.getCorreo().toString())&& password.equals(entidad.getContraseña().toString())){
                                     Toast.makeText(getApplicationContext(),
                                             "Usuario CORRECTO", Toast.LENGTH_SHORT).show();
                                     utils.setEntidad_conectada(entidad);
