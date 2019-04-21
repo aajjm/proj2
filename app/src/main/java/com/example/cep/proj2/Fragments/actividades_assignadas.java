@@ -29,9 +29,6 @@ public class actividades_assignadas extends Fragment {
     private ClaseActividad actividad = utils.getActividad_conectada();
     ArrayList<ClaseActividad> act =new ArrayList<>();
 
-    public actividades_assignadas() {
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +43,12 @@ public class actividades_assignadas extends Fragment {
         GridView gridView = (GridView) getView().findViewById(R.id.gridActividades);
         gridView.setAdapter(new Adaptador_Actividades_Assignadas(this));
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(AccionFragment.this, "" + position, Toast.LENGTH_SHORT).show();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
             }
         });
         return view;

@@ -103,7 +103,11 @@ public class MenuDesplegableActivity extends AppCompatActivity
             i.setClass(MenuDesplegableActivity.this,ActivityEntidades.class);
             startActivity(i);
 
-        } else if (id == R.id.nav_instalaciones) {
+        } else if(id == R.id.nav_actividades)
+        {
+            CargarFragment(new fragmentActividades());
+        }
+        else if (id == R.id.nav_instalaciones) {
             CargarFragment(new fragmentInstalaciones());
 
         }  else if (id == R.id.nav_preguntas) {

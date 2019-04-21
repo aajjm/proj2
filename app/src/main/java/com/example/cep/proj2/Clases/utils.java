@@ -25,4 +25,14 @@ public class utils {
     }
 //endregion
 
+//region CLASE ACTIVIDAD
+    public static ClaseInstalacion instalaciones_conectada;
+    public static ClaseInstalacion getInstalaciones_conectada() {
+        return instalaciones_conectada;
+    }
+
+    public static void instalaciones_conectada(ClaseInstalacion instalaciones_conectada) {
+        utils.instalaciones_conectada = instalaciones_conectada;
+    }
+//endregion
 }

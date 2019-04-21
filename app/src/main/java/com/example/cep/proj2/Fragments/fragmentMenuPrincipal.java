@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,102 +24,99 @@ import com.example.cep.proj2.R;
 
 public class fragmentMenuPrincipal extends Fragment {
 
+    private GridView GridListado;
+    private EnvioremntListener listener;
 
+    @Override
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        private GridView GridListado;
-        private EnvioremntListener listener;
-        @Override
-        public View onCreateView(LayoutInflater inflater,
-                ViewGroup container,
-                Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_menu_principal, container, false);
+    }
 
-            return inflater.inflate(R.layout.fragment_menu_principal, container, false);
-        }
+    @Override
+    public void onActivityCreated(Bundle state) {
+        super.onActivityCreated(state);
 
-        @Override
-        public void onActivityCreated(Bundle state) {
-            super.onActivityCreated(state);
+        GridListado = (GridView) getView().findViewById(R.id.gridview);
 
-            GridListado = (GridView) getView().findViewById(R.id.gridview);
+        GridListado.setAdapter(new AdaptadorEnvioremnt(this));
+        GridListado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            GridListado.setAdapter(new AdaptadorEnvioremnt(this));
-            GridListado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent;
 
-                    Intent intent;
+                switch (position) {
+                    case 0:
+                        intent = new Intent(getActivity(), Activity_Mapa.class);
+                        startActivity(intent);
+                        break;
 
-                    switch (position)
-                    {
-                        case 0:
-                            intent = new Intent(getActivity(), Activity_Mapa.class);
-                            startActivity(intent);
-                            break;
+                    case 1:
+                        intent = new Intent(getActivity(), fragmentInstalaciones.class);
+                        startActivity(intent);
+                        break;
 
-                        case 1:
-                            intent = new Intent(getActivity(), fragmentInstalaciones.class);
-                            startActivity(intent);
-                            break;
+                    case 2:
+                        intent = new Intent(getActivity(), Actividades.class);
+                        startActivity(intent);
+                        break;
 
-                        case 2:
-                            intent = new Intent(getActivity(), Actividades.class);
-                            startActivity(intent);
-                            break;
+                    case 3:
+                        intent = new Intent(getActivity(), Activity_Actividades.class);
+                        startActivity(intent);
+                        break;
 
-                        case 3:
-                            intent = new Intent(getActivity(), fragmentActividades.class);
-                            startActivity(intent);
-                            break;
+                    case 4:
+                        intent = new Intent(getActivity(), ActivityEntidades.class);
+                        startActivity(intent);
+                        break;
 
-                        case 4:
-                            intent = new Intent(getActivity(), ActivityEntidades.class);
-                            startActivity(intent);
-                            break;
+                    case 5:
 
-                        case 5:
-
-                            break;
-                    }
-                    if(listener!=null){
-                        listener.onEnviromentSeleccionado((ClaseMenu)GridListado.getAdapter().getItem(position));
-                    }
+                        break;
                 }
-            });
-        }
-        public interface EnvioremntListener {
-            void onEnviromentSeleccionado(ClaseMenu c);
-        }
-
-        public void setEnviromentListener(EnvioremntListener listener) {
-            this.listener=listener;
-        }
-
-        class AdaptadorEnvioremnt extends ArrayAdapter<ClaseMenu> {
-
-            Activity context;
-
-            AdaptadorEnvioremnt(Fragment context) {
-                super(context.getActivity(), R.layout.item_menu_principal, AdaptadorMenuPrincipal.getEnvironments());
-                this.context = context.getActivity();
+                if (listener != null) {
+                    listener.onEnviromentSeleccionado((ClaseMenu) GridListado.getAdapter().getItem(position));
+                }
             }
+        });
+    }
 
-            public View getView(int position, View convertView, ViewGroup parent) {
-                LayoutInflater inflater = context.getLayoutInflater();
-                View item = inflater.inflate(R.layout.item_menu_principal, null);
+    public interface EnvioremntListener {
+        void onEnviromentSeleccionado(ClaseMenu c);
+    }
 
-               ImageView imagen=(ImageView) item.findViewById(R.id.Foto);
+    public void setEnviromentListener(EnvioremntListener listener) {
+        this.listener = listener;
+    }
+
+    class AdaptadorEnvioremnt extends ArrayAdapter<ClaseMenu> {
+
+        Activity context;
+
+        AdaptadorEnvioremnt(Fragment context) {
+            super(context.getActivity(), R.layout.item_menu_principal, AdaptadorMenuPrincipal.getEnvironments());
+            this.context = context.getActivity();
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LayoutInflater inflater = context.getLayoutInflater();
+            View item = inflater.inflate(R.layout.item_menu_principal, null);
+
+            ImageView imagen = (ImageView) item.findViewById(R.id.Foto);
 
 
-
-             TextView   texto2 = (TextView) item.findViewById(R.id.TextoTituloL2);
-
-
-                texto2.setText(AdaptadorMenuPrincipal.getEnvironments().get(position).getNombre());
-                imagen.setImageResource(AdaptadorMenuPrincipal.getEnvironments().get(position).getFoto());
+            TextView texto2 = (TextView) item.findViewById(R.id.TextoTituloL2);
 
 
-                return (item);
-            }
+            texto2.setText(AdaptadorMenuPrincipal.getEnvironments().get(position).getNombre());
+            imagen.setImageResource(AdaptadorMenuPrincipal.getEnvironments().get(position).getFoto());
 
+
+            return item;
         }
     }
+}
