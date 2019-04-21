@@ -84,10 +84,6 @@ public class MenuDesplegableActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-
-
-
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -102,17 +98,17 @@ public class MenuDesplegableActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_entidades) {
             Intent i=new Intent();
-            i.setClass(MenuDesplegableActivity.this,MenuDesplegableActivity.class);
+            i.setClass(MenuDesplegableActivity.this,ActivityEntidades.class);
             startActivity(i);
 
         } else if (id == R.id.nav_instalaciones) {
+            
 
         }  else if (id == R.id.nav_preguntas) {
             CargarFragment(new frangmentPreguntas());
         } else if (id == R.id.nav_send) {
 
         }
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

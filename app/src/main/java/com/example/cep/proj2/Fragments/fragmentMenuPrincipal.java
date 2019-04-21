@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.cep.proj2.Activities.ActivityEntidades;
 import com.example.cep.proj2.Activities.Activity_Mapa;
+import com.example.cep.proj2.Activities.Activity_Actividades;
 import com.example.cep.proj2.Adaptadores.AdaptadorMenuPrincipal;
 import com.example.cep.proj2.Clases.ClaseMenu;
 import com.example.cep.proj2.R;
@@ -58,14 +58,16 @@ public class fragmentMenuPrincipal extends Fragment {
                         startActivity(intent);
 
                     }
+                    else if(position==3){
+                        Intent intent = new Intent(getActivity(), Activity_Actividades.class);
+                        startActivity(intent);
+
+                    }
                     else if(position==4){
                         Intent intent = new Intent(getActivity(), ActivityEntidades.class);
                         startActivity(intent);
 
                     }
-
-
-
                 }
             });
         }
