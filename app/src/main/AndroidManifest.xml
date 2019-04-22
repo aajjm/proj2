@@ -44,6 +44,8 @@
             android:screenOrientation="landscape">
 
         </activity>
+        <activity android:name=".Fragments.fragmentInstalaciones"/>7
+        <activity android:name=".Activities.InfoInstalaciones"/>*
     </application>
 
 </manifest>
