@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:layout_margin="50dp"
     android:orientation="horizontal"
+
     android:layout_gravity="center">
     <GridView
         android:layout_width="match_parent"

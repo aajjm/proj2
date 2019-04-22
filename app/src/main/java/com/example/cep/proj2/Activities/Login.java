@@ -56,6 +56,7 @@ public class Login extends AppCompatActivity {
 
                EntidadService entidadService = Api.getApi().create(EntidadService.class);
                 Call<ArrayList<ClaseEntidad>> listcall= entidadService.getEntidadCorreo(usuario);
+
                 listcall.enqueue(new Callback<ArrayList<ClaseEntidad>>() {
                     @Override
                     public void onResponse(Call<ArrayList<ClaseEntidad>> call, Response<ArrayList<ClaseEntidad>> response) {
