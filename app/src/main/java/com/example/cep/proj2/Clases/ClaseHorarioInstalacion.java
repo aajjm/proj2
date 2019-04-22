@@ -5,16 +5,16 @@ import java.util.ArrayList;
 //id_dia, hora_inicio(string), hora_Final(string), id_instalaciones
 public class ClaseHorarioInstalacion {
 
-    private ArrayList<ClaseDia> id_dia;
+    private int id_dia;
     private String hora_inicio;
     private String hora_Final;
-    private  ArrayList<ClaseInstalacion> id_instalaciones;
+    private int id_instalaciones;
 
-    public ArrayList<ClaseDia> getId_dia() {
+    public int getId_dia() {
         return id_dia;
     }
 
-    public void setId_dia(ArrayList<ClaseDia> id_dia) {
+    public void setId_dia(int id_dia) {
         this.id_dia = id_dia;
     }
 
@@ -34,11 +34,11 @@ public class ClaseHorarioInstalacion {
         this.hora_Final = hora_Final;
     }
 
-    public ArrayList<ClaseInstalacion> getId_instalaciones() {
+    public int getId_instalaciones() {
         return id_instalaciones;
     }
 
-    public void setId_instalaciones(ArrayList<ClaseInstalacion> id_instalaciones) {
+    public void setId_instalaciones(int id_instalaciones) {
         this.id_instalaciones = id_instalaciones;
     }
 }

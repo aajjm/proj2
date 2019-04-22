@@ -9,19 +9,30 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
-
+import android.widget.Toast;
+import com.example.cep.proj2.API.Api;
+import com.example.cep.proj2.API.ApiServices.HorarioInstalaciones;
 import com.example.cep.proj2.Clases.ClaseHorarioInstalacion;
 import com.example.cep.proj2.Clases.ClaseInstalacion;
+import com.example.cep.proj2.MensajeError;
 import com.example.cep.proj2.R;
 import com.example.cep.proj2.Fragments.fragmentInstalaciones;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class InfoInstalaciones extends AppCompatActivity {
 
     List<String> list;
     Spinner comboDias;
+    ArrayList<ClaseHorarioInstalacion> lista;
+    ArrayList<ClaseHorarioInstalacion> listHorarioInstalaciones;
+    ArrayList<ClaseHorarioInstalacion> finallista;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,14 +63,62 @@ public class InfoInstalaciones extends AppCompatActivity {
             gestionPublica.setChecked(false);
         }
 
-        // ClaseHorarioInstalaciones(int id_dia, String hora_inicio, String hora_Final, int id_instalaciones)
-        // public ClaseDia(int id_dia, int id_instalaciones)
 
-        final ArrayList<ClaseHorarioInstalacion> ArrayHorario = new ArrayList<>();
+        /*
+        HorarioInstalaciones horarioInstalaciones = Api.getApi().create(HorarioInstalaciones.class);
+        final Call<ArrayList<ClaseHorarioInstalacion>> listaHorarioInsta= horarioInstalaciones.getHorarioInstalaciones();
+        lista = new ArrayList<>();
+
+        listaHorarioInsta.enqueue(new Callback<ArrayList<ClaseHorarioInstalacion>>() {
+            @Override
+            public void onResponse(Call<ArrayList<ClaseHorarioInstalacion>> call, Response<ArrayList<ClaseHorarioInstalacion>> response) {
+                switch (response.code()){
+                    case 200:
+                        lista = response.body();
+                        Toast toast1 =  Toast.makeText(getApplicationContext(),
+                                "PRUEBA", Toast.LENGTH_SHORT);
+
+                        ArrayList<String> lista1 = new ArrayList<>();
+
+                        for(int i = 0; i < lista.size(); i++)
+                        {
+                            listHorarioInstalaciones.add(lista.get(i));
+                        }
+
+                        break;
+                    case 400:
+
+                        Gson gson = new Gson();
+                        Toast.makeText(getApplicationContext(),
+                                "Conexion mal ", Toast.LENGTH_SHORT).show();
+                        MensajeError mensajeError=gson.fromJson(response.errorBody().charStream(),MensajeError.class);
+                        Toast.makeText(getApplicationContext(),mensajeError.getMessage(),Toast.LENGTH_LONG).show();
+                        break;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<ClaseHorarioInstalacion>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),t.getCause() + " - " + t.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+
+        if(!listHorarioInstalaciones.isEmpty())
+        {
+            for (int i = 0; i <listHorarioInstalaciones.size();i++)
+            {
+                if(listHorarioInstalaciones.get(i).getId_dia() == (c.getId()))
+                {
+                    finallista.add(listHorarioInstalaciones.get(i));
+                }
+            }
+        }
+
+        final ArrayList<ClaseHorarioInstalacion> ArrayHorario = finallista;
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.combo_dias, android.R.layout.simple_spinner_item );
         comboDias.setAdapter(adapter);
-/*
+
 
         // Para rellenar los datos del Horario
         comboDias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
