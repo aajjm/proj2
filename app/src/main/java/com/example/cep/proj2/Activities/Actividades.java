@@ -26,12 +26,14 @@ import com.example.cep.proj2.API.ApiServices.EquipoService;
 import com.example.cep.proj2.API.ApiServices.EspacioService;
 import com.example.cep.proj2.API.ApiServices.HorarioActividadesDemandadas;
 import com.example.cep.proj2.API.ApiServices.InstalacionService;
+import com.example.cep.proj2.API.ApiServices.PartesService;
 import com.example.cep.proj2.Clases.ClaseActividad;
 import com.example.cep.proj2.Clases.ClaseActividadDemandada;
 import com.example.cep.proj2.Clases.ClaseEntidad;
 import com.example.cep.proj2.Clases.ClaseEquipo;
 import com.example.cep.proj2.Clases.ClaseEspacio;
 import com.example.cep.proj2.Clases.ClaseInstalacion;
+import com.example.cep.proj2.Clases.ClasePartes;
 import com.example.cep.proj2.Clases.utils;
 import com.example.cep.proj2.MensajeError;
 import com.example.cep.proj2.R;
@@ -54,9 +56,8 @@ public class Actividades extends AppCompatActivity implements View.OnClickListen
     private static final String DOS_PUNTOS = ":";
     ArrayList<ClaseInstalacion> lista;
     ArrayList<ClaseEspacio> lista2;
-    int id_instalaciones;
     ArrayList<ClaseEquipo> lista3;
-    String spinnerInstalaciones;
+    ArrayList<ClasePartes> lista4;
 
     private List<ClaseActividadDemandada> actividadDemandada;
     //Calendario para obtener fecha & hora
@@ -93,6 +94,8 @@ public class Actividades extends AppCompatActivity implements View.OnClickListen
     ArrayList<String>listainstalaciones;
     ArrayList<String>listaequipos;
     ArrayList<String> listaEspacios;
+    ArrayList<String> listaPartes;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +120,7 @@ public class Actividades extends AppCompatActivity implements View.OnClickListen
         viernes = (RadioButton) findViewById(R.id.RBviernes);
         sabado = (RadioButton) findViewById(R.id.RBsabado);
         domingo = (RadioButton) findViewById(R.id.RBdomingo);
-        Spinner partes = (Spinner) findViewById(R.id.partes);
+        final Spinner partes = (Spinner) findViewById(R.id.partes);
         Button enviarAct = (Button) findViewById(R.id.aceptarActividad);
         ibObtenerHora.setOnClickListener(this);
         ibObtenerHora2.setOnClickListener(this);
@@ -183,7 +186,7 @@ public class Actividades extends AppCompatActivity implements View.OnClickListen
                         listainstalaciones = new ArrayList<>();
 
                         for (int j = 0; j < lista2.size(); j++) {
-                            listainstalaciones.add(lista2.get(j).getNombre_espacios().toString());
+                            listainstalaciones.add(lista2.get(j).getNombre_espacios());
                         }
                         ArrayAdapter<CharSequence> adapter = new ArrayAdapter(Actividades.this, android.R.layout.simple_spinner_item, listainstalaciones);
                         espacios.setAdapter(adapter);
@@ -205,7 +208,7 @@ public class Actividades extends AppCompatActivity implements View.OnClickListen
             }
         });
 
-
+//EQUIPOS
         EquipoService equipoService = Api.getApi().create(EquipoService.class);
         final Call<ArrayList<ClaseEquipo>> listCall = equipoService.getEquipo();
 
@@ -245,13 +248,48 @@ public class Actividades extends AppCompatActivity implements View.OnClickListen
             }
         });
 
-        
+        //PARTES
+        PartesService partesService = Api.getApi().create(PartesService.class);
+        final Call<ArrayList<ClasePartes>> listPa = partesService.getParte();
+
+        lista4 = new ArrayList<>();
+        listPa.enqueue(new Callback<ArrayList<ClasePartes>>() {
+            @Override
+            public void onResponse(Call<ArrayList<ClasePartes>> call, Response<ArrayList<ClasePartes>> response) {
+                switch (response.code()) {
+                    case 200:
+                        lista4 = response.body();
+
+                         listaPartes = new ArrayList<>();
+
+                        for (int j = 0; j < lista4.size(); j++) {
+                            listaPartes.add(lista4.get(j).getNombre());
+                        }
+                        ArrayAdapter<CharSequence> adapter = new ArrayAdapter(Actividades.this, android.R.layout.simple_spinner_item, listaPartes);
+                        partes.setAdapter(adapter);
+                        break;
+                    case 400:
+
+                        Gson gson = new Gson();
+                        Toast.makeText(getApplicationContext(),
+                                "Conexion mal ", Toast.LENGTH_SHORT).show();
+                        MensajeError mensajeError = gson.fromJson(response.errorBody().charStream(), MensajeError.class);
+                        Toast.makeText(getApplicationContext(), mensajeError.getMessage(), Toast.LENGTH_LONG).show();
+                        break;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<ClasePartes>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getCause() + " - " + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
 
 
-      /*  instalaciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+    /*   instalaciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                spinnerInstalaciones = parent.getItemAtPosition(position).toString(); // posicion de
+                String spinnerInstalaciones = parent.getItemAtPosition(position).toString(); // posicion de
 
                 for (int i = 0; i < lista2.size(); i++) {
                     listaEspacios = new ArrayList<>();
