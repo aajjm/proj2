@@ -1,5 +1,6 @@
 package com.example.cep.proj2.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -100,7 +101,10 @@ public class MenuDesplegableActivity extends AppCompatActivity
             CargarFragment(new fragmentActividades());
 
         } else if (id == R.id.nav_entidades) {
-            CargarFragment(new fragmentEntidades());
+            Intent i=new Intent();
+            i.setClass(MenuDesplegableActivity.this,MenuDesplegableActivity.class);
+            startActivity(i);
+
         } else if (id == R.id.nav_instalaciones) {
 
         }  else if (id == R.id.nav_preguntas) {

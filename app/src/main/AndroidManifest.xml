@@ -2,28 +2,30 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cep.proj2">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="CEPSports"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+
+        android:usesCleartextTraffic="true">
         <activity
+            android:screenOrientation="landscape"
             android:name=".Activities.Login"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
+            android:screenOrientation="landscape"
             android:name=".Activities.MenuDesplegableActivity"
+            android:icon="@drawable/logocsp"
             android:label="MenuDesplegableActivity"
-            android:theme="@style/NoActionBar"
-            android:icon="@drawable/logocsp">
-
-        </activity>
+            android:theme="@style/NoActionBar" />
         <activity
+            android:screenOrientation="landscape"
             android:name=".Activities.Splash"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             <intent-filter>
@@ -32,7 +34,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.Registro" />
+        <activity android:name=".Activities.Registro"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".Activities.Activity_Mapa"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".Activities.ActivityEntidades"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".ModificarEntidad"
+            android:screenOrientation="landscape">
+
+        </activity>
     </application>
 
 </manifest>
