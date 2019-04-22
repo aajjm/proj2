@@ -29,9 +29,11 @@ import com.example.cep.proj2.API.ApiServices.InstalacionService;
 import com.example.cep.proj2.API.ApiServices.PartesService;
 import com.example.cep.proj2.Clases.ClaseActividad;
 import com.example.cep.proj2.Clases.ClaseActividadDemandada;
+import com.example.cep.proj2.Clases.ClaseDia;
 import com.example.cep.proj2.Clases.ClaseEntidad;
 import com.example.cep.proj2.Clases.ClaseEquipo;
 import com.example.cep.proj2.Clases.ClaseEspacio;
+import com.example.cep.proj2.Clases.ClaseHorarioActividadDemandada;
 import com.example.cep.proj2.Clases.ClaseInstalacion;
 import com.example.cep.proj2.Clases.ClasePartes;
 import com.example.cep.proj2.Clases.utils;
@@ -248,7 +250,7 @@ public class Actividades extends AppCompatActivity implements View.OnClickListen
             }
         });
 
-        //PARTES
+      /*  //PARTES
         PartesService partesService = Api.getApi().create(PartesService.class);
         final Call<ArrayList<ClasePartes>> listPa = partesService.getParte();
 
@@ -283,7 +285,7 @@ public class Actividades extends AppCompatActivity implements View.OnClickListen
             public void onFailure(Call<ArrayList<ClasePartes>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), t.getCause() + " - " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
 
 
     /*   instalaciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -323,6 +325,14 @@ public class Actividades extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.aceptarActividad:
                 ClaseActividadDemandada actividadDemandada = new ClaseActividadDemandada();
+                ClaseHorarioActividadDemandada horarioLunes = new ClaseHorarioActividadDemandada();
+                ClaseHorarioActividadDemandada horarioMartes = new ClaseHorarioActividadDemandada();
+                ClaseHorarioActividadDemandada horarioMiercoles = new ClaseHorarioActividadDemandada();
+                ClaseHorarioActividadDemandada horarioJueves = new ClaseHorarioActividadDemandada();
+                ClaseHorarioActividadDemandada horarioViernes = new ClaseHorarioActividadDemandada();
+                ClaseHorarioActividadDemandada horarioSabado = new ClaseHorarioActividadDemandada();
+                ClaseHorarioActividadDemandada horarioDomingo = new ClaseHorarioActividadDemandada();
+
 
                 if( !(  nombre.getText().toString().isEmpty() || entrenamiento.isSelected()|| entrenamiento.getText().toString().isEmpty()||
                         duracion.getText().toString().isEmpty()|| cantidadDias.getText().toString().isEmpty()|| lunes.isSelected()|| martes.isSelected()|| miercoles.isSelected()||
@@ -334,6 +344,46 @@ public class Actividades extends AppCompatActivity implements View.OnClickListen
                     actividadDemandada.setId_equipo(equipos.getId());
                     actividadDemandada.setDuracion(Float.parseFloat(duracion.getText().toString()));
                     actividadDemandada.setDias_semanales(Integer.parseInt(cantidadDias.getText().toString()));
+
+
+                    if(lunes.isChecked())
+                    {
+                        horarioLunes = new ClaseHorarioActividadDemandada(0,etHora,etHora2,actividadDemandada.getId());
+                    }
+                    else if(martes.isChecked())
+                    {
+                        horarioMartes = new ClaseHorarioActividadDemandada(1,etHora,etHora2,actividadDemandada.getId());
+                    }
+                    else if(miercoles.isChecked())
+                    {
+                        horarioMiercoles = new ClaseHorarioActividadDemandada(2,etHora,etHora2,actividadDemandada.getId());
+                    }
+                    else if(jueves.isChecked())
+                    {
+                        horarioJueves = new ClaseHorarioActividadDemandada(3,etHora,etHora2,actividadDemandada.getId());
+                    }
+                    else if(viernes.isChecked())
+                    {
+                        horarioViernes = new ClaseHorarioActividadDemandada(4,etHora,etHora2,actividadDemandada.getId());
+                    }
+                    else if(sabado.isChecked())
+                    {
+                        horarioSabado = new ClaseHorarioActividadDemandada(5,etHora,etHora2,actividadDemandada.getId());
+                    }
+                    else if(domingo.isChecked())
+                    {
+                        horarioDomingo = new ClaseHorarioActividadDemandada(6,etHora,etHora2,actividadDemandada.getId());
+                    }
+
+                    ArrayList<ClaseHorarioActividadDemandada> horario = new ArrayList();
+                    horario.add(horarioLunes);
+                    horario.add(horarioMartes);
+                    horario.add(horarioMiercoles);
+                    horario.add(horarioJueves);
+                    horario.add(horarioViernes);
+                    horario.add(horarioSabado);
+                    horario.add(horarioDomingo);
+
                 }
                 else
                 {

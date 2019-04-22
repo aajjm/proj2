@@ -1,5 +1,7 @@
 package com.example.cep.proj2.Clases;
 
+import android.widget.EditText;
+
 import java.sql.Time;
 import java.util.ArrayList;
 
@@ -10,6 +12,13 @@ public class ClaseHorarioActividadDemandada {
     private Time hora_Inicio;
     private Time hora_Final;
     private ArrayList<ClaseHorarioActividadDemandada> id_actividades_demandadas;
+
+    public ClaseHorarioActividadDemandada(int i, EditText etHora, EditText etHora2, int id) {
+    }
+
+    public ClaseHorarioActividadDemandada() {
+
+    }
 
     public ArrayList<ClaseDia> getId_dia() {
         return id_dia;
