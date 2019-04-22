@@ -6,16 +6,20 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_actividades"
-            android:icon="@drawable/trophypeq"
+            android:icon="@drawable/ico_trofeo"
             android:title="Actividades" />
         <item
             android:id="@+id/nav_entidades"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Entidades" />
+            android:icon="@drawable/user"
+            android:title="Perfil" />
         <item
             android:id="@+id/nav_instalaciones"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/instalaciones"
             android:title="Intalaciones" />
+        <item
+            android:id="@+id/nav_mapa"
+            android:icon="@drawable/google"
+            android:title="Mapa" />
 
     </group>
 
@@ -29,10 +33,6 @@
             android:id="@+id/nav_send"
             android:icon="@drawable/ic_menu_share"
             android:title="Contacto" />
-            <item
-                android:id="@+id/nav_mapa"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Mapa" />
         </menu>
     </item>
 

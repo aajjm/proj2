@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.cep.proj2.Fragments.fragmentInstalaciones;
 import com.example.cep.proj2.Fragments.fragmentMenuPrincipal;
 import com.example.cep.proj2.Fragments.fragmentActividades;
 import com.example.cep.proj2.Fragments.fragmentEntidades;
@@ -26,8 +27,8 @@ public class MenuDesplegableActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_desplegable);
-     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-       setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.logocsppeque);
 
@@ -84,6 +85,10 @@ public class MenuDesplegableActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+
+
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -96,19 +101,29 @@ public class MenuDesplegableActivity extends AppCompatActivity
 
             CargarFragment(new fragmentActividades());
 
-        } else if (id == R.id.nav_entidades) {
+        }
+        else if (id == R.id.nav_entidades)
+        {
             Intent i=new Intent();
-            i.setClass(MenuDesplegableActivity.this,ActivityEntidades.class);
+            i.setClass(MenuDesplegableActivity.this,MenuDesplegableActivity.class);
             startActivity(i);
 
-        } else if (id == R.id.nav_instalaciones) {
-            
-
-        }  else if (id == R.id.nav_preguntas) {
-            CargarFragment(new frangmentPreguntas());
-        } else if (id == R.id.nav_send) {
-
         }
+        else if (id == R.id.nav_instalaciones)
+        {
+            CargarFragment(new fragmentInstalaciones());
+        }
+        else if (id == R.id.nav_preguntas)
+        {
+            CargarFragment(new frangmentPreguntas());
+        }
+        else if (id == R.id.nav_send)
+        {
+            Intent i=new Intent();
+            i.setClass(MenuDesplegableActivity.this,Activity_Mapa.class);
+            startActivity(i);
+        }
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
