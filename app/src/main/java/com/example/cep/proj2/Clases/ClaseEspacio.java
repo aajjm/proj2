@@ -10,7 +10,7 @@ public class ClaseEspacio {
     private String nombre_espacios;
     private int precio;
     private boolean interior;
-    private ArrayList<ClaseInstalacion> id_instalaciones;
+    private int id_instalaciones;
 
     public int getId() {
         return id;
@@ -44,11 +44,11 @@ public class ClaseEspacio {
         this.interior = interior;
     }
 
-    public ArrayList<ClaseInstalacion> getId_instalaciones() {
+    public int getId_instalaciones() {
         return id_instalaciones;
     }
 
-    public void setId_instalaciones(ArrayList<ClaseInstalacion> id_instalaciones) {
+    public void setId_instalaciones(int id_instalaciones) {
         this.id_instalaciones = id_instalaciones;
     }
 }

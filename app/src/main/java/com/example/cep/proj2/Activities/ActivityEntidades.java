@@ -39,7 +39,6 @@ public class ActivityEntidades extends AppCompatActivity {
         final EditText Correo =(EditText) findViewById(R.id.Correo);
         final EditText Altitud =(EditText) findViewById(R.id.altitud);
         final EditText Latitud =(EditText) findViewById(R.id.latitud);
-
         final EditText video=(EditText) findViewById(R.id.video);
         final Button boton=(Button) findViewById(R.id.modificar);
 
@@ -50,7 +49,6 @@ public class ActivityEntidades extends AppCompatActivity {
         Altitud.setText(String.valueOf(entidad.getAltitud()));
         Latitud.setText(entidad.getLatitud()+"");
         video.setText(entidad.getVideo());
-
 
          boton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,17 +62,3 @@ public class ActivityEntidades extends AppCompatActivity {
         });
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

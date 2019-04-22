@@ -25,7 +25,7 @@ public class utils {
     }
 //endregion
 
-//region CLASE ACTIVIDAD
+//region CLASE INSTALACIONES
     public static ClaseInstalacion instalaciones_conectada;
     public static ClaseInstalacion getInstalaciones_conectada() {
         return instalaciones_conectada;
@@ -33,6 +33,28 @@ public class utils {
 
     public static void instalaciones_conectada(ClaseInstalacion instalaciones_conectada) {
         utils.instalaciones_conectada = instalaciones_conectada;
+    }
+//endregion
+
+//region CLASE ESPACIOS
+    public static ClaseEspacio espacio_conectada;
+    public static ClaseEspacio getespacio_conectadaa() {
+        return espacio_conectada;
+    }
+
+    public static void espacio_conectada(ClaseEspacio espacio_conectada) {
+        utils.espacio_conectada = espacio_conectada;
+    }
+//endregion
+
+//region CLASE EQUIPOS
+    public static ClaseEquipo equipo_conectada;
+    public static ClaseEquipo getequipo_conectada() {
+        return equipo_conectada;
+    }
+
+    public static void equipo_conectada(ClaseEquipo equipo_conectada) {
+        utils.equipo_conectada = equipo_conectada;
     }
 //endregion
 }
