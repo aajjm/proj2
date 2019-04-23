@@ -25,6 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
+    public static ClaseEntidad entidadPrinc;
     private  Button boton;
     private ClaseEntidad entidad= new ClaseEntidad();
    private EditText usuarios;
@@ -60,6 +61,8 @@ public class Login extends AppCompatActivity {
                 listcall.enqueue(new Callback<ArrayList<ClaseEntidad>>() {
                     @Override
                     public void onResponse(Call<ArrayList<ClaseEntidad>> call, Response<ArrayList<ClaseEntidad>> response) {
+
+                        entidadPrinc = null;
                         switch (response.code()){
 
                            case 200: entidad = response.body().get(0);
@@ -73,6 +76,7 @@ public class Login extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(),
                                             "Usuario CORRECTO", Toast.LENGTH_SHORT).show();
                                     utils.setEntidad_conectada(entidad);
+                                    entidadPrinc = entidad;
                                     Intent i=new Intent();
                                     i.setClass(Login.this,MenuDesplegableActivity.class);
                                     startActivity(i);
