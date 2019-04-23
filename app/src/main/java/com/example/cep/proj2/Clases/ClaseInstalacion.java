@@ -1,5 +1,7 @@
 package com.example.cep.proj2.Clases;
 
+import java.io.Serializable;
+
 //id, nombre_instalaciones, diraccion, gestion_publica, altitud, latitut
 public class ClaseInstalacion {
     private int id;

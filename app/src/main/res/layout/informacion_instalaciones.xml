@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:layout_margin="10dp"
+        android:textColor="@android:color/background_dark"
+        android:textStyle="bold"
+        android:id="@+id/nombreInstalacion"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dirección:"
+            android:textStyle="bold"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20dp"
+            android:paddingLeft="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/background_dark"
+            android:id="@+id/direccion"
+            android:textSize="20dp"
+            android:paddingLeft="20dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gestión Publica:"
+            android:textStyle="bold"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20dp"
+            android:paddingLeft="20dp"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gestionpublica"
+            android:layout_marginLeft="60dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:background="@android:color/darker_gray"
+        android:text="Horario"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:textColor="@android:color/background_dark"
+        android:layout_marginTop="20dp"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/spinner"
+        android:layout_marginTop="15dp"
+
+        ></Spinner>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="H. inicio "
+            android:textStyle="bold"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20dp"
+            android:paddingLeft="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="--:--"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20dp"
+            android:id="@+id/horarioInicio1"
+            android:paddingLeft="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="H. fin"
+            android:textStyle="bold"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20dp"
+            android:paddingLeft="50dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="--:--"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20dp"
+            android:id="@+id/horarioTarde1"
+            android:paddingLeft="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="H. inicio "
+            android:textStyle="bold"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20dp"
+            android:paddingLeft="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="--:--"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20dp"
+            android:id="@+id/horarioInicio2"
+            android:paddingLeft="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="H. fin"
+            android:textStyle="bold"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20dp"
+            android:paddingLeft="50dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="--:--"
+            android:id="@+id/horarioTarde2"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20dp"
+            android:paddingLeft="20dp"/>
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:background="@android:color/darker_gray"
+        android:text="Espacios"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:textColor="@android:color/background_dark"
+        android:layout_marginTop="20dp"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+
+</LinearLayout>
