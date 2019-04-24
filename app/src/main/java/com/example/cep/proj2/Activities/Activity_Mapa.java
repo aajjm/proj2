@@ -37,6 +37,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -55,9 +56,13 @@ public class Activity_Mapa extends FragmentActivity implements OnMapReadyCallbac
 
     public Address direccionEntidadad;
     public ArrayList<ClaseInstalacion> instalaciones;
+    public static ClaseInstalacion unaInstalacion;
+    public static boolean markerClicked= false;
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        markerClicked = false;
         Log.d(TAG, "onMapReady: map is ready");
         mMap = googleMap;
         geoLocate();
@@ -71,6 +76,15 @@ public class Activity_Mapa extends FragmentActivity implements OnMapReadyCallbac
             return;
         }
         mMap.setMyLocationEnabled(true);
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                markerClicked = true;
+                CargarActivityInstalaciones(marker.getTitle().split(": ")[1]);
+                Intent intent = new Intent(Activity_Mapa.this,InfoInstalaciones.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -93,7 +107,7 @@ public class Activity_Mapa extends FragmentActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__mapa);
-
+        markerClicked = false;
         if(isServiceOk()){
             getLocationPermission();
         }
@@ -297,5 +311,35 @@ public class Activity_Mapa extends FragmentActivity implements OnMapReadyCallbac
             ubicacionEntidad.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
             mMap.addMarker(ubicacionEntidad);
         }
+    }
+
+    private void CargarActivityInstalaciones(String nombreInstalacion){
+        unaInstalacion = new ClaseInstalacion();
+        InstalacionService instalacionService = Api.getApi().create(InstalacionService.class);
+        Call<ClaseInstalacion> listcall= instalacionService.getInstalacionNombre(nombreInstalacion);
+        listcall.enqueue(new Callback<ClaseInstalacion>() {
+            @Override
+            public void onResponse(Call<ClaseInstalacion> call, Response<ClaseInstalacion> response) {
+                switch (response.code()){
+
+                    case 200:
+                        unaInstalacion = response.body();
+                        break;
+                    case 400:
+
+                        Gson gson = new Gson();
+                        Toast.makeText(getApplicationContext(),
+                                "error de conexion", Toast.LENGTH_SHORT).show();
+                        MensajeError mensajeError=gson.fromJson(response.errorBody().charStream(),MensajeError.class);
+                        Toast.makeText(getApplicationContext(),mensajeError.getMessage(),Toast.LENGTH_LONG).show();
+                        break;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ClaseInstalacion> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),t.getCause()+"-"+t.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

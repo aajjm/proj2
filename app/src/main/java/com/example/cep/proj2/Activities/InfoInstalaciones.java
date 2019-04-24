@@ -37,8 +37,8 @@ public class InfoInstalaciones extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.informacion_instalaciones);
-
-        comboDias = (Spinner) findViewById(R.id.spinner);
+        ClaseInstalacion c = new ClaseInstalacion();
+                comboDias = (Spinner) findViewById(R.id.spinner);
         final TextView horarioInicio1       = (TextView)  findViewById(R.id.horarioInicio1);
         final TextView horarioTarde1        = (TextView)  findViewById(R.id.horarioTarde1);
         final TextView horarioInicio2       = (TextView)  findViewById(R.id.horarioInicio2);
@@ -48,7 +48,12 @@ public class InfoInstalaciones extends AppCompatActivity {
         final CheckBox gestionPublica       = (CheckBox)  findViewById(R.id.gestionpublica);
 
         //Intent i = getIntent();
-        ClaseInstalacion c = fragmentInstalaciones.pasarInsta;
+        if(Activity_Mapa.markerClicked){
+            c= Activity_Mapa.unaInstalacion;
+        }
+        else{
+            c = fragmentInstalaciones.pasarInsta;
+        }
 
         nombreInstalacion.setText(c.getNombre_instalaciones());
         direccion.setText(c.getDireccion());

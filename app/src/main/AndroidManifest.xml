@@ -23,7 +23,7 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBdzuj3qsYKYrioHKlmzyhMu2pw85mX9Gk" />
+            android:value="AIzaSyAYXSnrjZFUT341pd2nirGyaC0PioOvOx4" />
 
         <activity
             android:screenOrientation="landscape"
@@ -55,8 +55,8 @@
             android:screenOrientation="landscape">
 
         </activity>
-        <activity android:name=".Fragments.fragmentInstalaciones"/>7
-        <activity android:name=".Activities.InfoInstalaciones"/>*
+        <activity android:name=".Fragments.fragmentInstalaciones"/>
+        <activity android:name=".Activities.InfoInstalaciones"/>
     </application>
 
 
