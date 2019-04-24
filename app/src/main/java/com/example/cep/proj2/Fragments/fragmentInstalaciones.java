@@ -112,12 +112,7 @@ public class fragmentInstalaciones extends AppCompatActivity {
                 startActivity(i);
             }
         });
-            /*@Override
-            public void onClick(View v) {
-                Intent  i = new Intent(fragmentInstalaciones.this, InfoInstalaciones.class);
-                pasarInsta = listaInstalacionesMia.get(recyclerInstalaciones.getChildAdapterPosition(v));
-                startActivity(i);
-            }*/
+
 
         recyclerInstalaciones.setAdapter(readap);
     }
