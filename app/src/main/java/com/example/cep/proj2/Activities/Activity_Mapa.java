@@ -23,6 +23,7 @@ import com.example.cep.proj2.API.ApiServices.InstalacionService;
 import com.example.cep.proj2.Clases.ClaseEntidad;
 import com.example.cep.proj2.Clases.ClaseInstalacion;
 import com.example.cep.proj2.Clases.utils;
+import com.example.cep.proj2.Fragments.fragmentInstalaciones;
 import com.example.cep.proj2.MensajeError;
 import com.example.cep.proj2.R;
 import com.google.android.gms.common.ConnectionResult;
@@ -186,9 +187,13 @@ public class Activity_Mapa extends FragmentActivity implements OnMapReadyCallbac
                     public void onComplete(@NonNull Task task) {
                         if(task.isSuccessful()){
 
-                            Log.d(TAG, "COMPLETADO");
-                            MoverCamara(new LatLng( direccionEntidadad.getLatitude(), direccionEntidadad.getLongitude()), DEFAULT_ZOOM);
-
+                            ClaseInstalacion instalacionPorVer = fragmentInstalaciones.pasarInsta;
+                            if(instalacionPorVer !=null){
+                                Address direccionInsta = geoLocateInsta(instalacionPorVer.getDireccion());
+                                MoverCamara(new LatLng(direccionInsta.getLatitude(), direccionInsta.getLongitude()), 16f);
+                            }else {
+                                MoverCamara(new LatLng(direccionEntidadad.getLatitude(), direccionEntidadad.getLongitude()), DEFAULT_ZOOM);
+                            }
                         }else{
                             Toast.makeText(Activity_Mapa.this, "no se encuentra la ubicacion actual", Toast.LENGTH_SHORT).show();
                         }
@@ -206,10 +211,6 @@ public class Activity_Mapa extends FragmentActivity implements OnMapReadyCallbac
     }
 
     private void geoLocate(){
-        Log.d(TAG, "geoLocate: geolocating");
-
-
-
         Geocoder geocoder = new Geocoder(Activity_Mapa.this);
         List<Address> list = new ArrayList<>();
         try{
@@ -220,6 +221,23 @@ public class Activity_Mapa extends FragmentActivity implements OnMapReadyCallbac
 
         if(list.size() > 0){
              direccionEntidadad = list.get(0);
+        }
+    }
+
+    private Address geoLocateInsta(String direccion){
+        Geocoder geocoder = new Geocoder(Activity_Mapa.this);
+        List<Address> list = new ArrayList<>();
+        try{
+            list = geocoder.getFromLocationName(direccion, 1);
+        }catch (IOException e){
+            Log.e(TAG, "geoLocate: IOException: " + e.getMessage() );
+        }
+
+        if(list.size() > 0){
+         return list.get(0);
+        }
+        else{
+            return null;
         }
     }
 

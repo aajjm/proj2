@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.cep.proj2.API.Api;
 import com.example.cep.proj2.API.ApiServices.InstalacionService;
+import com.example.cep.proj2.Activities.Activity_Mapa;
 import com.example.cep.proj2.Activities.InfoInstalaciones;
 import com.example.cep.proj2.Adaptadores.RecyclerViewInstalacionesAdapter;
 import com.example.cep.proj2.Clases.ClaseHorarioInstalacion;
@@ -42,7 +43,7 @@ public class fragmentInstalaciones extends AppCompatActivity {
     List<ClaseInstalacion> listaInstalaciones;
     ArrayList<ClaseInstalacion> lista;
     ArrayList<ClaseInstalacion> listaInstalacionesMia = new ArrayList<>();
-    public static ClaseInstalacion pasarInsta;
+    public static ClaseInstalacion pasarInsta = null;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,15 +97,27 @@ public class fragmentInstalaciones extends AppCompatActivity {
 
         RecyclerViewInstalacionesAdapter readap = new RecyclerViewInstalacionesAdapter(listaInstalacionesMia);
 
-        readap.setOnClickListener(new View.OnClickListener()
-        {
+        readap.setOnItemClickListener(new RecyclerViewInstalacionesAdapter.OnItemClickListener() {
             @Override
+            public void onMapClick(int position) {
+                Intent  i = new Intent(fragmentInstalaciones.this, Activity_Mapa.class);
+                pasarInsta = listaInstalacionesMia.get(position);
+                startActivity(i);
+            }
+
+            @Override
+            public void onTextClick(int position) {
+                Intent  i = new Intent(fragmentInstalaciones.this, InfoInstalaciones.class);
+                pasarInsta = listaInstalacionesMia.get(position);
+                startActivity(i);
+            }
+        });
+            /*@Override
             public void onClick(View v) {
                 Intent  i = new Intent(fragmentInstalaciones.this, InfoInstalaciones.class);
                 pasarInsta = listaInstalacionesMia.get(recyclerInstalaciones.getChildAdapterPosition(v));
                 startActivity(i);
-            }
-        } );
+            }*/
 
         recyclerInstalaciones.setAdapter(readap);
     }
