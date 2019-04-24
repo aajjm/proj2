@@ -1,7 +1,6 @@
 package com.example.cep.proj2.Clases;
 
 import java.sql.Time;
-import java.util.ArrayList;
 
 //id, nombre_actividades_demandadas, tipo_entrenamiento, id_espacio, id_equipo, duracion(float), dias_semanales(int), asignada(bool) -->
 // --> intervalo_horario(time), dias_favorables, partes_pista_demandada
@@ -9,8 +8,8 @@ public class ClaseActividadDemandada {
     private int id;
     private String nombre_actividades_demandadas;
     private boolean tipo_entrenamiento;
-    private ArrayList<ClaseEspacio> id_espacio;
-    private ArrayList<ClaseEquipo> id_equipo;
+    private int id_espacio;
+    private int id_equipo;
     private float duracion;
     private int dias_semanales;
     private boolean asignada;
@@ -42,19 +41,19 @@ public class ClaseActividadDemandada {
         this.tipo_entrenamiento = tipo_entrenamiento;
     }
 
-    public ArrayList<ClaseEspacio> getId_espacio() {
+    public int getId_espacio() {
         return id_espacio;
     }
 
-    public void setId_espacio(ArrayList<ClaseEspacio> id_espacio) {
+    public void setId_espacio(int id_espacio) {
         this.id_espacio = id_espacio;
     }
 
-    public ArrayList<ClaseEquipo> getId_equipo() {
+    public int getId_equipo() {
         return id_equipo;
     }
 
-    public void setId_equipo(ArrayList<ClaseEquipo> id_equipo) {
+    public void setId_equipo(int id_equipo) {
         this.id_equipo = id_equipo;
     }
 

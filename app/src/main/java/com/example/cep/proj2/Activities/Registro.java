@@ -36,7 +36,7 @@ public class Registro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro);
 
-     final EditText  Nombre =(EditText) findViewById(R.id.nombre);
+        final EditText  Nombre =(EditText) findViewById(R.id.nombre);
         final EditText direccion=(EditText) findViewById(R.id.direccion);
         final EditText NIF =(EditText) findViewById(R.id.NIF);
         final EditText Correo =(EditText) findViewById(R.id.Correo);
@@ -79,9 +79,10 @@ public class Registro extends AppCompatActivity {
             public void onClick(View v) {
                 ClaseEntidad entidad= new ClaseEntidad();
 
-                if( !(Nombre.getText().toString().isEmpty()
-                        || direccion.getText().toString().isEmpty() || NIF.getText().toString().isEmpty() || Correo.getText().toString().isEmpty()
-                        || Contraseña.getText().toString().isEmpty()|| Latitud.getText().toString().isEmpty()|| Altitud.getText().toString().isEmpty())){
+                if( !(  Nombre.getText().toString().isEmpty() || direccion.getText().toString().isEmpty() || NIF.getText().toString().isEmpty()||
+                        Correo.getText().toString().isEmpty()|| Contraseña.getText().toString().isEmpty()|| Latitud.getText().toString().isEmpty()||
+                        Altitud.getText().toString().isEmpty()))
+                {
                     entidad.setVideo(video.getText().toString());
                     entidad.setNombre(Nombre.getText().toString());
                     entidad.setDireccion(direccion.getText().toString());
@@ -90,35 +91,30 @@ public class Registro extends AppCompatActivity {
                     entidad.setAltitud(Altitud.getText().toString());
                     entidad.setLatitud(Latitud.getText().toString());
                     entidad.setTemporada("2018-2019");
-                    if(validarEmail(Correo.getText().toString())){
+                    if(validarEmail(Correo.getText().toString()))
+                    {
                         entidad.setCorreo(Correo.getText().toString());
-                    }else {
+                    }
+                    else
+                    {
                         Toast.makeText(getApplicationContext(),
                                 "Correo MAl", Toast.LENGTH_SHORT).show();
-                    }
-;
+                    };
 
                     if(Contraseña.getText().toString().equals(RepContraseña.getText().toString())){
                         entidad.setContraseña(Contraseña.getText().toString());
                     }
-                    else {
+                    else
+                    {
                         Toast.makeText(getApplicationContext(),
                                 "Contraseñas Diferentes", Toast.LENGTH_SHORT).show();
-
                     }
-
-
                 }
-
-                
-
-                 else {
+                else
+                {
                     Toast.makeText(getApplicationContext(),
                             "Introduce Todos Los Datos", Toast.LENGTH_SHORT).show();
-
                 }
-
-
 
                 EntidadService entidadService = Api.getApi().create(EntidadService.class);
                 Call<ClaseEntidad> listcall= entidadService.InsertarEntidad(entidad);
@@ -147,14 +143,13 @@ public class Registro extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<ClaseEntidad> call, Throwable t) {
-    Toast.makeText(getApplicationContext(),t.getCause()+"-"+t.getMessage(),Toast.LENGTH_LONG).show();
+                    public void onFailure(Call<ClaseEntidad> call, Throwable t)
+                    {
+                        Toast.makeText(getApplicationContext(),t.getCause()+"-"+t.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });
             }
         });
-
-
 }
 
     private boolean validarEmail(String email) {
@@ -166,7 +161,6 @@ public class Registro extends AppCompatActivity {
         intent.setType("video/");
         startActivityForResult(intent,1);
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

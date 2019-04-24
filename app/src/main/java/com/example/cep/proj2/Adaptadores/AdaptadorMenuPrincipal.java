@@ -16,7 +16,6 @@ public class AdaptadorMenuPrincipal {
         lista.add(new ClaseMenu(R.drawable.ico_man,"Perfil"));
         lista.add(new ClaseMenu(R.drawable.ico_sym,"Equipos"));
 
-
         return lista;
 
     }
