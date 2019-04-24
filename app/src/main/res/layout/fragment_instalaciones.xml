@@ -12,6 +12,7 @@
         android:padding="10dp"
         android:gravity="center"
         android:text="Instalaciones"
+        android:background="@drawable/gradient"
         android:textSize="30dp"
         android:layout_margin="10dp"
         android:textColor="@android:color/background_dark"

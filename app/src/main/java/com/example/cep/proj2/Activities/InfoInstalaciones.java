@@ -68,8 +68,6 @@ public class InfoInstalaciones extends AppCompatActivity {
             gestionPublica.setChecked(false);
         }
 
-
-        /*
         HorarioInstalaciones horarioInstalaciones = Api.getApi().create(HorarioInstalaciones.class);
         final Call<ArrayList<ClaseHorarioInstalacion>> listaHorarioInsta= horarioInstalaciones.getHorarioInstalaciones();
         lista = new ArrayList<>();
@@ -119,12 +117,14 @@ public class InfoInstalaciones extends AppCompatActivity {
             }
         }
 
-        final ArrayList<ClaseHorarioInstalacion> ArrayHorario = finallista;
+
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.combo_dias, android.R.layout.simple_spinner_item );
         comboDias.setAdapter(adapter);
 
+        final ArrayList<ClaseHorarioInstalacion> ArrayHorario = finallista;
 
+        /*
         // Para rellenar los datos del Horario
         comboDias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:gravity="center"
+        android:background="@drawable/gradient"
         android:textSize="30dp"
         android:layout_margin="10dp"
         android:textColor="@android:color/background_dark"
@@ -69,7 +70,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textStyle="bold"
-        android:background="@android:color/darker_gray"
+        android:background="#81E389"
         android:text="Horario"
         android:layout_gravity="center"
         android:textSize="20dp"
@@ -103,7 +104,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="--:--"
+            android:text="09:00"
             android:textColor="@android:color/background_dark"
             android:textSize="20dp"
             android:id="@+id/horarioInicio1"
@@ -121,7 +122,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="--:--"
+            android:text="13:00"
             android:textColor="@android:color/background_dark"
             android:textSize="20dp"
             android:id="@+id/horarioTarde1"
@@ -147,7 +148,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="--:--"
+            android:text="15:30"
             android:textColor="@android:color/background_dark"
             android:textSize="20dp"
             android:id="@+id/horarioInicio2"
@@ -165,28 +166,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="--:--"
+            android:text="20:00"
             android:id="@+id/horarioTarde2"
             android:textColor="@android:color/background_dark"
             android:textSize="20dp"
             android:paddingLeft="20dp"/>
     </LinearLayout>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:background="@android:color/darker_gray"
-        android:text="Espacios"
-        android:layout_gravity="center"
-        android:textSize="20dp"
-        android:textColor="@android:color/background_dark"
-        android:layout_marginTop="20dp"/>
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
-
 </LinearLayout>
