@@ -18,6 +18,7 @@ import com.example.cep.proj2.Activities.Actividades;
 import com.example.cep.proj2.Activities.ActivityEntidades;
 import com.example.cep.proj2.Activities.Activity_Mapa;
 import com.example.cep.proj2.Activities.Activity_Actividades;
+import com.example.cep.proj2.Activities.Activity_equipo;
 import com.example.cep.proj2.Adaptadores.AdaptadorMenuPrincipal;
 import com.example.cep.proj2.Clases.ClaseMenu;
 import com.example.cep.proj2.R;
@@ -75,7 +76,8 @@ public class fragmentMenuPrincipal extends Fragment {
                         break;
 
                     case 5:
-
+                        intent = new Intent(getActivity(), Activity_equipo.class);
+                        startActivity(intent);
                         break;
                 }
                 if (listener != null) {

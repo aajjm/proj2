@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,9 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
-
         android:usesCleartextTraffic="true">
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -26,18 +23,22 @@
             android:value="AIzaSyAYXSnrjZFUT341pd2nirGyaC0PioOvOx4" />
 
         <activity
-            android:screenOrientation="landscape"
             android:name=".Activities.Login"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
+            android:name=".Activities.Actividades"
             android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
             android:name=".Activities.MenuDesplegableActivity"
             android:icon="@drawable/logocsp"
             android:label="MenuDesplegableActivity"
+            android:screenOrientation="landscape"
             android:theme="@style/NoActionBar" />
         <activity
-            android:screenOrientation="landscape"
             android:name=".Activities.Splash"
+            android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,20 +46,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.Registro"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".Activities.Activity_Mapa"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".Activities.ActivityEntidades"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".ModificarEntidad"
-            android:screenOrientation="landscape">
-
-        </activity>
-        <activity android:name=".Fragments.fragmentInstalaciones"/>
-        <activity android:name=".Activities.InfoInstalaciones"/>
+        <activity
+            android:name=".Activities.Registro"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.Activity_Mapa"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.Activity_equipo"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Activities.ActivityEntidades"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ModificarEntidad"
+            android:screenOrientation="landscape" />
+        <activity android:name=".Fragments.fragmentInstalaciones" />
+        <activity android:name=".Activities.InfoInstalaciones" />
     </application>
-
-
 
 </manifest>
